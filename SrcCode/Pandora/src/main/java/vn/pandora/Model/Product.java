@@ -7,7 +7,7 @@ public class Product {
 
 	public Product() {
 		
-	}
+}
 	public Product( int id , String name, String description,double price, double promotionalPrice,int quantity,int sold,Boolean isActive, Boolean isSelling
 			,List<String> listImages,int categoryId,List<Integer> styleValueIds,int storeId,int rating,Date createdAt,Date updatedAt ) {
 		this.id=id;

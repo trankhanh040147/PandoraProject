@@ -4,18 +4,10 @@
 		<pattern>/api*</pattern>
 		<pattern>/login*</pattern>
 	</excludes>
-	<!-- apply Sitemesh default template -->
-<!-- 	<decorator name="admin" page="admin.jsp">
-		<pattern>/admin*</pattern>
-	</decorator>
-	<decorator name="customer" page="customer.jsp">
-		<pattern>/cust*</pattern>
-	</decorator>
 	<decorator name="vendor" page="vendor.jsp">
-		<pattern>/vend*</pattern>
+		<pattern>/vendor*</pattern>
 	</decorator>
--->
-	<decorator name="web" page="web.jsp">
-		<pattern>/*</pattern>
+	<decorator name="admin" page="admin.jsp">
+		<pattern>/admin*</pattern>
 	</decorator>
 </decorators>
