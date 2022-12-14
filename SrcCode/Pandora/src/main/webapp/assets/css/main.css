@@ -12037,6 +12037,7 @@ button,
 .search-wrapper {
     position: relative;
     margin-right: .66667rem
+    bottom=10px;
 }
 
 .search-wrapper .input-holder {
@@ -12049,10 +12050,11 @@ button,
 
 .search-wrapper .input-holder .search-input {
     width: 100%;
-    padding: 0 70px 0 20px;
+    padding: 0 70px 10px 20px;
     opacity: 0;
     position: absolute;
     top: 0;
+    
     left: 0;
     background: transparent;
     box-sizing: border-box;
@@ -12155,7 +12157,7 @@ button,
 }
 
 .search-wrapper.active .input-holder {
-    width: 290px;
+    width: 390px;
     border-radius: 50px;
     background: rgba(0, 0, 0, 0.05);
     transition: all 0.5s cubic-bezier(0, 0.105, 0.035, 1.57)
@@ -12178,7 +12180,7 @@ button,
 }
 
 .search-wrapper.active .close {
-    left: 300px;
+    left: 400px;
     opacity: .6 !important;
     transform: rotate(45deg);
     transition: all 0.6s cubic-bezier(0, 0.105, 0.035, 1.57);

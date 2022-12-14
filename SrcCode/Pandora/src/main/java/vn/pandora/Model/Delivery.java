@@ -16,6 +16,7 @@ public class Delivery {
 		this.createDate=createdAt;
 		this.updatedAt=updatedAt;
 	}
+
 public int getId() {
 		return id;
 	}
@@ -40,10 +41,10 @@ public int getId() {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public Boolean getIsDeleted() {
+	public boolean isDeleted() {
 		return isDeleted;
 	}
-	public void setIsDeleted(Boolean isDeleted) {
+	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
 	public Date getCreateDate() {
@@ -58,11 +59,12 @@ public int getId() {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
 private int id ;
 private String name;
 private String description;
 private int price ;
-private Boolean isDeleted;
+private boolean isDeleted;
 private Date createDate;
 private Date updatedAt;
 

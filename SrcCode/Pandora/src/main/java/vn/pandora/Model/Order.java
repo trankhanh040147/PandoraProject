@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Order {
 
-	public Order( int id , int userId, int storeId ,int deliveryId,String adress, String phone,String status, Boolean isPaidBefore, double amountFromUser, double amountFromStore, double amountToStore, double amountToGD, Date createdAt, Date updatedAt ) { 
+	public Order( int id , int userId, int storeId ,int deliveryId,String adress, String phone,String status, boolean isPaidBefore, double amountFromUser, double amountFromStore, double amountToStore, double amountToGD, Date createdAt, Date updatedAt ) { 
 		this.id=id;
 		this.userId=userId;
 		this.storeId=storeId;
@@ -67,10 +67,10 @@ public String getStatus() {
 public void setStatus(String status) {
 	this.status = status;
 }
-public Boolean getIsPaidBefore() {
+public boolean isPaidBefore() {
 	return isPaidBefore;
 }
-public void setIsPaidBefore(Boolean isPaidBefore) {
+public void setPaidBefore(boolean isPaidBefore) {
 	this.isPaidBefore = isPaidBefore;
 }
 public double getAmountFromUser() {
@@ -112,7 +112,7 @@ public void setUpdatedAt(Date updatedAt) {
 private String address;
 private String phone;
 private String status;
-private Boolean isPaidBefore;
+private boolean isPaidBefore;
 private double amountFromUser;
 private double amountFromStore;
 private double amountToStore;

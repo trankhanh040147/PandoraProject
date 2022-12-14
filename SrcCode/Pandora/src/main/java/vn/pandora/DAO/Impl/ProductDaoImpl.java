@@ -26,8 +26,8 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 						ps.setDouble(4,product.getPromotionalPrice());
 						ps.setInt(5,product.getQuantity());
 						ps.setInt(6,product.getSold());
-						ps.setBoolean(7,product.getIsActive());
-						ps.setBoolean(8,product.getIsSelling());
+						ps.setBoolean(7,product.isActive());
+						ps.setBoolean(8,product.isSelling());
 						ps.setString(9,getString(product.getListImages()));
 						ps.setInt(10,product.getCategoryId());
 						ps.setString(11,getString2(product.getStyleValueIds()));
@@ -43,7 +43,7 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 
 	@Override
 	public void Update(Product product) {
-		String sql= "UPDATE [Product] set name=? , description=? , price=?, promotionalPrice=? , quantity=? , sold =? , isActive=? , isSelling=?  , listImages=? , categoryId=? , styleValueIds=?,storeId=?, rating=? where id=? ";
+		String sql= "UPDATE Product set name=? , description=? , price=?, promotionalPrice=? , quantity=? , sold =? , isActive=? , isSelling=?  , listImages=? , categoryId=? , styleValueIds=?,storeId=?, rating=? where id=? ";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps=con.prepareStatement(sql);
@@ -54,8 +54,8 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 						ps.setDouble(4,product.getPromotionalPrice());
 						ps.setInt(5,product.getQuantity());
 						ps.setInt(6,product.getSold());
-						ps.setBoolean(7,product.getIsActive());
-						ps.setBoolean(8,product.getIsSelling());
+						ps.setBoolean(7,product.isActive());
+						ps.setBoolean(8,product.isSelling());
 						ps.setString(9,getString(product.getListImages()));
 						ps.setInt(10,product.getCategoryId());
 						ps.setString(11,getString2(product.getStyleValueIds()));

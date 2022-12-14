@@ -5,8 +5,8 @@ import java.sql.Date;
 public class User {
 
 	public User(int id , String firstname, String lastname, String id_card, String email,
-			String phone, Boolean isEmailActive, Boolean isPhoneActive,
-			String password,String role, String  address, String avatar,String cover,
+			String phone, boolean isEmailActive, boolean isPhoneActive,
+			String password,String role, String  addresses, String avatar,String cover,
 			double e_wallet , Date createdAt, Date updatedAt) {
 		
 		this.id =id ;
@@ -19,7 +19,7 @@ public class User {
 		this.isPhoneActive=isPhoneActive;
 		this.password=password;
 		this.role=role;
-		this.addresse=address;
+		this.addresses=addresses;
 		this.avatar=avatar;
 		this.cover=cover;
 		this.e_wallet=e_wallet;
@@ -28,6 +28,7 @@ public class User {
 		
 	}
 	public User() {}
+
 public int getId() {
 		return id;
 	}
@@ -88,11 +89,11 @@ public int getId() {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getAddresse() {
-		return addresse;
+	public String getAddresses() {
+		return addresses;
 	}
-	public void setAddresse(String addresse) {
-		this.addresse = addresse;
+	public void setAddresses(String addresses) {
+		this.addresses = addresses;
 	}
 	public String getAvatar() {
 		return avatar;
@@ -124,6 +125,7 @@ public int getId() {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
 private int id;
 private String firstname;
 private String lastname;
@@ -134,7 +136,7 @@ private boolean isEmailActive;
 private boolean isPhoneActive;
 private String password;
 private String role;
-private String addresse;
+private String addresses;
 private String avatar;
 private String cover;
 private double e_wallet;

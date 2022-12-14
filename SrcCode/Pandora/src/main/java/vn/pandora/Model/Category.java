@@ -7,7 +7,7 @@ public class Category {
 	public Category() {
 		
 	}
-	public Category(int id , String name, int categoryId, String image,Boolean isDeleted,Date createdAt,Date updatedAt) {
+	public Category(int id , String name, int categoryId, String image,boolean isDeleted,Date createdAt,Date updatedAt) {
 		this.id=id;
 		this.name =name ;
 		this.categoryId=categoryId;
@@ -20,7 +20,7 @@ private int id;
 private String name;
 private int categoryId;
 private String image;
-private Boolean isDeleted ;
+private boolean isDeleted ;
 private Date createdAt;
 private Date updatedAt;
 public int getId() {
@@ -47,10 +47,10 @@ public String getImage() {
 public void setImage(String image) {
 	this.image = image;
 }
-public Boolean getIsDeleted() {
+public boolean isDeleted() {
 	return isDeleted;
 }
-public void setIsDeleted(Boolean isDeleted) {
+public void setDeleted(boolean isDeleted) {
 	this.isDeleted = isDeleted;
 }
 public Date getCreatedAt() {
@@ -65,4 +65,5 @@ public Date getUpdatedAt() {
 public void setUpdatedAt(Date updatedAt) {
 	this.updatedAt = updatedAt;
 }
+
 }

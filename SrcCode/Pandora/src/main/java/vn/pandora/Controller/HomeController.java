@@ -21,7 +21,7 @@ public class HomeController extends HttpServlet {
 
 		// Trang chủ cho vendor
 		if (url.contains("vendor")) {
-			req.getRequestDispatcher("/views/vendor/index.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/vendor/OrderDetail.jsp").forward(req, resp);
 		}
 		// Trang chủ cho admin
 		else if (url.contains("admin")) {

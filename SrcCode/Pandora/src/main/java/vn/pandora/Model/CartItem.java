@@ -12,7 +12,7 @@ public class CartItem {
 	public CartItem( int id , int cartId, int productId, List<Integer> styleValueIds,int count, Date createdAt,Date updatedAt) {
 		this.id=id ;
 		this.cartId=cartId;
-		this.productid=productId;
+		this.productId=productId;
 		this.styleValueIds=styleValueIds;
 		this.count=count;
 		this.createdAt=createdAt;
@@ -30,11 +30,11 @@ public int getId() {
 	public void setCartId(int cartId) {
 		this.cartId = cartId;
 	}
-	public int getProductid() {
-		return productid;
+	public int getproductId() {
+		return productId;
 	}
-	public void setProductid(int productid) {
-		this.productid = productid;
+	public void setproductId(int productId) {
+		this.productId = productId;
 	}
 	
 	public List<Integer> getStyleValueIds() {
@@ -63,7 +63,7 @@ public int getId() {
 	}
 private int id;
 private int cartId;
-private int productid;
+private int productId;
 private List<Integer> styleValueIds;
 private int count;
 private Date createdAt;

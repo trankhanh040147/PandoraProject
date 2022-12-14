@@ -32,7 +32,7 @@
 	    -->
 
 <link href="${pageContext.request.contextPath}/assets/css/main.css" rel="stylesheet">
-
+<link href="${pageContext.request.contextPath}/assets/css/infStore.css" rel="stylesheet">
 </head>
 
 <body>

@@ -10,20 +10,16 @@ public class StoreDaoImpl extends ConnectJDBC implements iStoreDao {
 
 	@Override
 	public void Add(Store store) {
-		String sql= "INSERT INTO [Store] VALUES(?,?,?,?,?,?,?,?,?,?)";
+		String sql= "insert into Store(name,bio,ownerId, avatar,cover,featured_image ) values(?,?,?,?,?,?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, store.getName());
 			ps.setString(2, store.getBio());
 			ps.setInt(3, store.getOwnerId());
-			ps.setBoolean(4, store.getIsActive());
-			ps.setBoolean(5, store.getIsOpen());
-		    ps.setString(6, store.getAvatar());
-			ps.setString(7, store.getCover());
-			ps.setString(8, store.getFeatured_image());
-			ps.setInt(9, store.getRating());
-			ps.setDouble(10, store.getE_wallet());
+		    ps.setString(4, store.getAvatar());
+			ps.setString(5, store.getCover());
+			ps.setString(6, store.getFeatured_image());
 			
 			ps.execute();
 		} 
@@ -34,15 +30,15 @@ public class StoreDaoImpl extends ConnectJDBC implements iStoreDao {
 
 	@Override
 	public void Update(Store store) {
-		String sql="Update [Store] set name=? ,bio=?,ownerId=?,[isActive ]=? ,[isOpen ]=?, avatar=?,cover=?,featured_image=?,rating=?,e_wallet=? where _id=?;";
+		String sql="Update Store set name=? ,bio=?,ownerId=?,[isActive ]=? ,[isOpen ]=?, avatar=?,cover=?,featured_image=?,rating=?,e_wallet=? where _id=?;";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, store.getName());
 			ps.setString(2, store.getBio());
 			ps.setInt(3, store.getOwnerId());
-			ps.setBoolean(4, store.getIsActive());
-			ps.setBoolean(5, store.getIsOpen());
+			ps.setBoolean(4, store.isActive());
+			ps.setBoolean(5, store.isOpen());
 			ps.setString(6, store.getAvatar());
 			ps.setString(7, store.getCover());
 			ps.setString(8, store.getFeatured_image());

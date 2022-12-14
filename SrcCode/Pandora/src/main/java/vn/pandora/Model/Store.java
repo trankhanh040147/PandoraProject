@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Store {
 	public Store() {}
 	public Store(int id , String name, String bio, int ownerId,
-			Boolean isActive,Boolean isOpen, String avatar,String cover,
+			boolean isActive,boolean isOpen, String avatar,String cover,
 			String featured_image,int rating,double e_wallet,Date createAt,Date updatedAt ) {
 		this.id=id;
 		this.name = name ;
@@ -22,6 +22,19 @@ public class Store {
 		this.updatedAt=updatedAt;
 		
 	}
+	public Store( String name, String bio, int ownerId,
+			 String avatar,String cover,
+			String featured_image,Date createAt) {
+		
+		this.name = name ;
+		this.bio=bio;
+		this.ownerId=ownerId;
+		this.avatar=avatar;
+		this.cover=cover;
+		this.featured_image=featured_image;
+
+	}
+
 public int getId() {
 		return id;
 	}
@@ -46,16 +59,16 @@ public int getId() {
 	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
 	}
-	public Boolean getIsActive() {
+	public boolean isActive() {
 		return isActive;
 	}
-	public void setIsActive(Boolean isActive) {
+	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	public Boolean getIsOpen() {
+	public boolean isOpen() {
 		return isOpen;
 	}
-	public void setIsOpen(Boolean isOpen) {
+	public void setOpen(boolean isOpen) {
 		this.isOpen = isOpen;
 	}
 	public String getAvatar() {
@@ -97,15 +110,16 @@ public int getId() {
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
-	public void setUpdatedAr(Date updatedAt) {
+	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
 private int id;
 private String name;
 private String bio;
 private int ownerId;
-private  Boolean isActive;
-private Boolean isOpen;
+private  boolean isActive;
+private boolean isOpen;
 private String avatar;
 private String cover;
 private String featured_image;

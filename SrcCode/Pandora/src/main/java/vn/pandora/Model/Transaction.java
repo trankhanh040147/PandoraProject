@@ -7,7 +7,7 @@ public class Transaction {
 	public Transaction() {
 		// TODO Auto-generated constructor stub
 	}
-	public Transaction(int id , int userId, int storeId, Boolean isUp, double amount,Date createdAt,Date updatedAt) {
+	public Transaction(int id , int userId, int storeId, boolean isUp, double amount,Date createdAt,Date updatedAt) {
 		this.id=id;
 		this.userId=userId;
 		this.storeId=storeId;
@@ -37,10 +37,10 @@ public int getStoreId() {
 public void setStoreId(int storeId) {
 	this.storeId = storeId;
 }
-public Boolean getIsUp() {
+public boolean isUp() {
 	return isUp;
 }
-public void setIsUp(Boolean isUp) {
+public void setUp(boolean isUp) {
 	this.isUp = isUp;
 }
 public double getAmount() {
@@ -61,7 +61,7 @@ public Date getUpdatedAt() {
 public void setUpdatedAt(Date updatedAt) {
 	this.updatedAt = updatedAt;
 }
-private Boolean isUp;
+private boolean isUp;
 private double amount;
 private Date createdAt;
 private Date updatedAt;

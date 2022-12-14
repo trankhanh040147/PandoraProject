@@ -8,7 +8,7 @@ public class Style {
 	public Style() {
 		
 	}
-	public Style(int id ,String name, List<Integer> categoryIds, Boolean isDeleted,Date createdAt, Date updatedAt) {
+	public Style(int id ,String name, List<Integer> categoryIds, boolean isDeleted,Date createdAt, Date updatedAt) {
 		this.id =id;
 		this.name=name;
 		this.categoryIds=categoryIds;
@@ -19,12 +19,6 @@ public class Style {
 private int id;
 private String  name;
 private List<Integer> categoryIds;
-public List<Integer> getCategoryIds() {
-	return categoryIds;
-}
-public void setCategoryIds(List<Integer> categoryIds) {
-	this.categoryIds = categoryIds;
-}
 public int getId() {
 	return id;
 }
@@ -37,11 +31,16 @@ public String getName() {
 public void setName(String name) {
 	this.name = name;
 }
-
-public Boolean getIsDeleted() {
+public List<Integer> getCategoryIds() {
+	return categoryIds;
+}
+public void setCategoryIds(List<Integer> categoryIds) {
+	this.categoryIds = categoryIds;
+}
+public boolean isDeleted() {
 	return isDeleted;
 }
-public void setIsDeleted(Boolean isDeleted) {
+public void setDeleted(boolean isDeleted) {
 	this.isDeleted = isDeleted;
 }
 public Date getCreatedAt() {
@@ -56,7 +55,7 @@ public Date getUpdatedAt() {
 public void setUpdatedAt(Date updatedAt) {
 	this.updatedAt = updatedAt;
 }
-private Boolean isDeleted ;
+private boolean isDeleted ;
 private Date createdAt;
 private Date updatedAt ;
 }

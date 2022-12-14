@@ -7,7 +7,7 @@ public class StyleValue {
 	public StyleValue() {
 		
 	}
-	public StyleValue(int id , String name,int styleId, Boolean isDeleted,Date createdAt,Date updatedAt) {
+	public StyleValue(int id , String name,int styleId, boolean isDeleted,Date createdAt,Date updatedAt) {
 		this.id=id;
 		this.name =name ;
 		this.styleId=styleId;
@@ -15,6 +15,7 @@ public class StyleValue {
 		this.createdAt=createdAt;
 		this.updatedAt=updatedAt;
 	}
+
 public int getId() {
 		return id;
 	}
@@ -33,10 +34,10 @@ public int getId() {
 	public void setStyleId(int styleId) {
 		this.styleId = styleId;
 	}
-	public Boolean getIsDeleted() {
+	public boolean isDeleted() {
 		return isDeleted;
 	}
-	public void setIsDeleted(Boolean isDeleted) {
+	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
 	public Date getCreatedAt() {
@@ -51,10 +52,11 @@ public int getId() {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
 private int id;
 private String name;
 private int styleId;
-private Boolean isDeleted;
+private boolean isDeleted;
 private Date createdAt;
 private Date updatedAt;
 }
