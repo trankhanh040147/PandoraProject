@@ -1,5 +1,7 @@
 package vn.pandora.Service.Impl;
 
+import java.util.List;
+
 import vn.pandora.DAO.iStoreDao;
 import vn.pandora.DAO.Impl.StoreDaoImpl;
 import vn.pandora.Model.Store;
@@ -28,6 +30,18 @@ public class StoreServiceImpl implements iStoreService {
 	public void UpdateWallet(int id, double mount) {
 		storeDao.UpdateWallet(id, mount);
 		
+	}
+
+	@Override
+	public List<Integer> GetIdSrore(int id) {
+		
+		return storeDao.GetIdSrore(id);
+	}
+
+	@Override
+	public List<Store> GetStoreByownerId(int id) {
+		
+		return storeDao.GetStoreByownerId(id);
 	}
 
 }

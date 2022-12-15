@@ -3,6 +3,9 @@ package vn.pandora.DAO.Impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 import vn.pandora.DAO.iStoreDao;
 import vn.pandora.Model.Store;
 import vn.pandora.Connection.*;
@@ -101,6 +104,61 @@ public class StoreDaoImpl extends ConnectJDBC implements iStoreDao {
 		}
 		
 		
+	}
+
+	@Override
+	public List<Integer> GetIdSrore(int id) {
+		String sql= "select _id from Store where ownerId=?";
+		try {
+			List<Integer> list= new ArrayList<Integer>();
+			Connection con =super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getInt("_id"));
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+
+	@Override
+	public List<Store> GetStoreByownerId(int id) {
+		String sql = "select * from Store where ownerID=?";
+		try {
+			List<Store> list=new ArrayList<Store>();
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Store store = new Store(
+						rs.getInt("_id"),
+						rs.getString("name"),
+						rs.getString("bio"),
+						rs.getInt("ownerId"),
+						rs.getBoolean("isActive"),
+						rs.getBoolean("isOpen"),
+						rs.getString("avatar"),
+						rs.getString("cover"),
+						rs.getString("featured_image"),
+						rs.getInt("rating"),
+						rs.getDouble("e_wallet"),
+						rs.getDate("createdAt"),
+						rs.getDate("updatedAt")
+				);
+				list.add(store);
+			}
+			return list;
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 

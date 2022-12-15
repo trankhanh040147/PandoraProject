@@ -14,7 +14,7 @@
 
 					<div>
 						TRANG QUẢN LÝ GIAN HÀNG 
-						<div class="page-title-subheading">Luôn đặt thương hiệu gian hàng lên trên</div>
+						<div class="page-title-subheading">Luôn đặt thương hiệu gian hàng lên hàng đầu</div>
 					</div>
 				</div>
 			</div>

@@ -1,11 +1,22 @@
 package vn.pandora.DAO;
 
+import java.util.List;
+
 import vn.pandora.Model.User;
 
 public interface iUserDao {
-void Add(User user);
-void Insert(User user);
-void Delete(User user);
-User GetOne(User user);
-User GetAll(User user);
+
+	User login(String email, String passwd);
+
+	User findByEmail(String email);
+
+	void registerCustomer(User user);
+
+	void registerVendor(User user);
+
+	List<User> getAll(int index, int pagesize);
+
+	List<User> findUser(String infoUser, int index, int pagesize);
+
+	User getOne(int id);
 }

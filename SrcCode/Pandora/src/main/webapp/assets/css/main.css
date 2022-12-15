@@ -22026,7 +22026,8 @@ legend {
 }
 
 .fa-upload:before {
-    content: "\f093"
+    content: "\f093";
+    font-size: 20px
 }
 
 .fa-ups:before {
@@ -22814,7 +22815,8 @@ legend {
 }
 
 .pe-7s-close-circle:before {
-    content: ""
+    content: "";
+    font-size: 20px;
 }
 
 .pe-7s-id:before {

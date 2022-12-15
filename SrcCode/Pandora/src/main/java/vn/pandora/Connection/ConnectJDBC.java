@@ -17,11 +17,11 @@ public class ConnectJDBC {
 	
 	//Connection của P.Khánh
 	private final String serverName = "localhost";
-	private final String dbName = "QUANLYDETAI";
+	private final String dbName = "LTWeb";
 	private final String portNumber = "1433";
 	private final String instance = "";
 	private final String userID = "sa";
-	private final String password = "040147";
+	private final String password = "123456";
 	
 	//Connection của Q.Khánh
 //	private final String serverName = "LAPTOP-EVKJEPF2";

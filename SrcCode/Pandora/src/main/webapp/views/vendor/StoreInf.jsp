@@ -21,35 +21,52 @@
 		</div>
 		<div class="">
 			<!-- Body file -->
-			 <form >
+			 <form enctype="multipart/form-data" action="<c:url value="/vendor/informationStore"/>" method="post" >
 			 <div class="content">
             <div class="container-fluid">
                 <div class="row">
+               
                     <div class="col-lg-4 col-md-5	">
-                        <div class="card card-user">
-                            <div class="image">
-                                <img src="${pageContext.request.contextPath}/assets/img/avatars/2.jpg" alt="..."/>
-                            </div>
-                            <div class="content">
+								<div class="card card-user">
+									<div class="image">
+										<label> <input type="file" accept="image/*"
+											name="cover"
+											onchange="document.querySelector('.coverimg').src = window.URL.createObjectURL(this.files[0]);"
+											style="display: none; cursor: pointer;"> <a> <c:url
+													value="/image?fname=${storeDetail.cover}" var="imgUrl"></c:url>
+												<img class="coverimg" src="${imgUrl}" alt="Ảnh bìa"
+												style="align-items: center;">
+										</a>
+										</label>
+									</div>
+
+
+
+									<div class="content">
                                 <div class="author">
-                                  <img class="avatar border-white" src="${pageContext.request.contextPath}/assets/img/avatars/2.jpg" alt="..."/>
-                                  <h4 class="title" name ="name">Chet Faker </h4>
+                                <label> <input type="file" accept="image/*"
+											name="avatar"
+											onchange="document.querySelector('.avatarimg').src = window.URL.createObjectURL(this.files[0]);"
+											style="display: none; cursor: pointer;"> <a> <c:url
+													value="/image?fname=${storeDetail.avatar}" var="imgUrl1"></c:url>
+												<img class=" avatarimg avatar border-white" alt="Ảnh đại diện" src="${imgUrl1}"/>
+										</a>
+										</label>
+                                  
                                 </div>
-                                <p class="description text-center" name="bio">
-                                    
-                                </p>
+                                <input  name ="name" value="${storeDetail.name}" style="border:none; outline:none; margin-left:100px ; font-size: 20px"/> 
                             </div>
                             <hr>
                             <div class="text-center">
                                 <div class="row">
                                     <div class="col-md-4 col-md-offset-1">
-                                        <h5>12<br /><small>Đánh giá</small></h5>
+                                        <h5 >${storeDetail.rating}<br /><small>Đánh giá</small></h5>
                                     </div>
                                     <div class="col-md-4">
                                         <h5>2GB<br /><small>Doanh thu</small></h5>
                                     </div>
                                      <div class="col-md-4">
-                                        <h5>2GB<br /><small>Ví điện tử </small></h5>
+                                        <h5>${storeDetail.e_wallet }<br /><small>Ví điện tử </small></h5>
                                     </div>
                                 </div>
                             </div>
@@ -67,25 +84,25 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Mã cửa hàng</label>
-                                                <span type="text" class="form-control border-input" name="storeId" ></span>
+                                                <span type="text" class="form-control border-input" name="storeId" >${storeDetail.id}</span>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Mã chủ cửa hàng</label>
-                                                <span type="text" class="form-control border-input" name="ownerId" ></span>
+                                                <span type="text" class="form-control border-input" name="ownerId" >${storeDetail.ownerId}</span>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="bio">Mô tả cửa hàng</label>
-                                                <input type="email" name="bio" class="form-control border-input" value="">
+                                                <input type="email" name="bio" class="form-control border-input" value="${storeDetail.bio}">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Trạng thái</label>
-                                                <input type="text" class="form-control border-input" name="isActive" value="">
+                                                <input type="text" class="form-control border-input" name="isOpen" value="${storeDetail.isOpen()}">
                                             </div>
                                         </div>
                  
@@ -97,7 +114,7 @@
                             </div>
                         </div>
                     </div>
-
+                 
 
                 </div>
             </div>
@@ -106,3 +123,9 @@
 			<!-- Body file -->
 		</div>
 	</div>
+
+
+
+
+
+ 

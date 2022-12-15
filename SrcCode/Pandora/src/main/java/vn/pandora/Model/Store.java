@@ -24,7 +24,7 @@ public class Store {
 	}
 	public Store( String name, String bio, int ownerId,
 			 String avatar,String cover,
-			String featured_image,Date createAt) {
+			String featured_image) {
 		
 		this.name = name ;
 		this.bio=bio;

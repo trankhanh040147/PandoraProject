@@ -56,7 +56,7 @@
 	<!-- body -->
 
 	<!--=== Footer v4 ===-->
-	<jsp:include page="/common/web/footer.jsp"></jsp:include>
+	<jsp:include page="/common/web/footer-vendor.jsp"></jsp:include>
 	<!--=== End Footer v4 ===-->
 
 </body>

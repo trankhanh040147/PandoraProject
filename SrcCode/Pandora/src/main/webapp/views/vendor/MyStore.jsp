@@ -19,12 +19,13 @@
 				</div>
 			</div>
 		</div>
+		<form enctype="multipart/form-data" action="<c:url value="/vendor/listStore"/>" method="post">
 		<div class="app-header-left">
 			<div class="search-wrapper">
 				<div class="input-holder">
 					<input type="text" name="search" class="search-input"
 						placeholder="Nhập mã của cửa hàng">
-					<button class="search-icon">
+					<button type="submit" class="search-icon">
 						<span></span>
 					</button>
 				</div>
@@ -35,30 +36,35 @@
 			<!-- Body file -->
 
 			<div class="col-lg-6">
-				<div class="main-card mb-3 card">
+				<div class="main-card mb-3 card" style="width: 1000px;margin-left:70px ">
 					<div class="card-body">
-						<h5 class="card-title" style="margin-left:500px;">Danh sách cửa hàng của bạn</h5>
+						<h5 class="card-title" ">Danh sách cửa hàng của bạn</h5>
 						<table class="mb-0 table table-hover">
 							<thead>
 								<tr>
 									<th>STT</th>
 									<th>Tên cửa hàng</th>
-									<th>Mô tả</th>
+									<th>Id cửa hàng</th>
 									<th>Trạng thái</th>
+									<th style="width: 40% ;text-align: center; ">Mô tả</th>
 									<th></th>
 								</tr>
 							</thead>
+							<c:forEach items="${listStore}" var ="x">
+							
 							<tbody>
 								<tr>
 									<th scope="row">1</th>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>${x.getName()}</td>
+									<td>${x.getId()}</td>
+									<td>${x.isOpen() }</td>
+									<td>${x.getBio() }</td>
 									<td><a
-										href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
+										href="${pageContext.request.contextPath}/vendor/informationStore?sid=${x.getId()}"
 										class=" fa fa-eye"></a></td>
 								</tr>
 							</tbody>
+							</c:forEach>
 						</table>
 					</div>
 				</div>
@@ -66,4 +72,5 @@
 
 			<!-- Body file -->
 		</div>
+		</form>
 	</div>
