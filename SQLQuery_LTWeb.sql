@@ -1,7 +1,7 @@
-﻿CREATE DATABASE LTWeb
+﻿CREATE DATABASE Pandora
 go
 
-USE LTWeb
+USE Pandora
 
 go
 
@@ -30,9 +30,6 @@ CREATE TABLE [dbo].[User] (
 );
 
 go
-
-Select * from dbo.[User] ORDER BY firstname asc OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY
-Select * from dbo.[User]
 
 Insert Into dbo.[User](firstname, lastname, email, phone, password, role) values (N'Ad001', N'Admin', 'admin001@gmail.com', '0369895828', 'admin001', 'admin')
 Insert Into dbo.[User](firstname, lastname, email, phone, password, role) values (N'Ad002', N'Admin', 'admin002@gmail.com', '0236457727', 'admin002', 'admin')
@@ -106,9 +103,6 @@ CREATE TABLE [dbo].[Store] (
 
 go
 
-Select * from Store ORDER BY name asc OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY
-Select * from Store
-
 Insert Into Store(name, ownerId) values (N'ao_thun_vdr', 24)
 Insert Into Store(name, ownerId) values (N'golana.vn', 25)
 Insert Into Store(name, ownerId) values (N'thanhgau33', 26)
@@ -147,9 +141,6 @@ CREATE TABLE [dbo].[Category] (
 );
 
 go
-
-Select * from Category ORDER BY name asc OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY
-Select * from Category
 
 Insert Into Category(name) values (N'Quần áo')
 Insert Into Category(name) values (N'Giày dép')
@@ -196,9 +187,6 @@ CREATE TABLE [dbo].[Style] (
 
 go
 
-Select * from Style ORDER BY name asc OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY
-Select * from Style
-
 Insert Into Style(name, categoryIds) values (N'Màu', '1,2,3,4,5,6,7,13')
 Insert Into Style(name, categoryIds) values (N'SIZE', '1,2,6,7')
 Insert Into Style(name, categoryIds) values (N'Type', '3,5')
@@ -229,9 +217,6 @@ CREATE TABLE [dbo].[StyleValue] (
 );
 
 go
-
-Select * from StyleValue ORDER BY name asc OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY
-Select * from StyleValue
 
 Insert Into StyleValue(name, styleId) values (N'Trắng', 1)
 Insert Into StyleValue(name, styleId) values (N'Đen', 1)
@@ -331,9 +316,6 @@ CREATE TABLE [dbo].[Product] (
 
 go
 
-Select * from Product ORDER BY _id asc OFFSET 0 ROWS FETCH NEXT 6 ROWS ONLY
-Select * from Product
-
 Insert Into Product(name, price, promotionalPrice, quantity, listImages, categoryId, styleValueIds, storeId) values (N'Tee basic ss1 CREWZ áo thun tay lỡ unisex Local Brand - AO_THUN_DVR (V427)', 159000, 82680, 160773, 'Product/p1-trang.jpg,Product/p1-den.jpg,Product/p1-hong.jpg,Product/p1-xanh.jpg,Product/p1-be.jpg', 6, '1,2,3,4,5,30,31,32', 1)
 Insert Into Product(name, price, promotionalPrice, quantity, listImages, categoryId, styleValueIds, storeId) values (N'Áo Hoodie ADLV Teddy chất nỉ dày dặn cực ấm, Áo Hoodie Unisex Nam Nữ _ ao_thun_vdr_(nmoi3)', 256000, 122880, 666641, 'Product/p2-trang.jpg,Product/p2-den.jpg', 1, '1,2,30,31,32', 1)
 Insert Into Product(name, price, promotionalPrice, quantity, listImages, categoryId, styleValueIds, storeId) values (N'Áo thun LocalBrand Cemmery , áo thun tay lỡ form rộng dáng oversize SIGNATURE TEE 2.0 ( V61)', 159000, 69960, 4301, 'Product/p3-be.jpg,Product/p3-xanh.jpg,,Product/p3-den.jpg', 1, '5,4,2,30,31,32', 1)
@@ -359,7 +341,7 @@ Insert Into Product(name, price, promotionalPrice, quantity, listImages, categor
 
 Insert Into Product(name, price, promotionalPrice, quantity, listImages, categoryId, styleValueIds, storeId) values (N'Balo Thời Trang Ulzzang Nam Nữ Chống Nước Mar societt', 70000, 43900, 102035, 'Product/p21-trang.jpg,Product/p21-den.jpg,Product/p21-hong.jpg', 3, '1,2,3,53', 4)
 Insert Into Product(name, price, promotionalPrice, quantity, listImages, categoryId, styleValueIds, storeId) values (N'BALO ULZZANG BASIC CHỐNG NƯỚC ( 2 khoá song song 2 bên)', 60000, 42000, 63736, 'Product/p22-den.jpg', 3, '2', 4)
-Insert Into Product(name, price, promotionalPrice, quantity, listImages, categoryId, styleValueIds, storeId) values (N'Balo Thời Trang Nam Nữ Cao Cấp ChangYe ( Có túi nước)', 60000, 43900, 38714, 'Product/p23-trang.jpg,Product/p23-den.jpg,Product/p23-hong.jpg,Product/p23-xanh.jpg', 3, '1,2,3,4,,53', 4)
+Insert Into Product(name, price, promotionalPrice, quantity, listImages, categoryId, styleValueIds, storeId) values (N'Balo Thời Trang Nam Nữ Cao Cấp ChangYe ( Có túi nước)', 60000, 43900, 38714, 'Product/p23-trang.jpg,Product/p23-den.jpg,Product/p23-hong.jpg,Product/p23-xanh.jpg', 3, '1,2,3,4,53', 4)
 Insert Into Product(name, price, promotionalPrice, quantity, listImages, categoryId, styleValueIds, storeId) values (N'Balo Set 4 Món Hình Hoa Cúc Trắng Siêu Hot', 80000, 59900, 5868, 'Product/p24-den.jpg', 3, '2', 4)
 
 Insert Into Product(name, price, promotionalPrice, quantity, listImages, categoryId, styleValueIds, storeId) values (N'Đồng hồ thạch anh dây da đeo tay thời trang cho nữ', 41429, 30000, 4749, 'Product/p25-trang.jpg,Product/p25-den.jpg,Product/p25-xanh.jpg,Product/p25-do.jpg', 4, '1,2,4,12', 5)
