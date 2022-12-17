@@ -98,7 +98,7 @@ CREATE TABLE [dbo].[Store] (
     [updatedAt]      DATE            DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_Store] PRIMARY KEY CLUSTERED ([_id] ASC),
     CONSTRAINT [rating] CHECK ([rating]>=(0) AND [rating]<=(5)),
-    CONSTRAINT [FK_Store_User] FOREIGN KEY ([ownerId]) REFERENCES [dbo].[User] ([_id])
+    CONSTRAINT [FK_Store_User] FOREIGN KEY ([ownerId]) REFERENCES [dbo].[User] ([_id]) ON DELETE CASCADE
 );
 
 go
@@ -213,7 +213,7 @@ CREATE TABLE [dbo].[StyleValue] (
     [createdAt] DATE            DEFAULT (getdate()) NOT NULL,
     [updatedAt] DATE            DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_StyleValue] PRIMARY KEY CLUSTERED ([_id] ASC),
-    CONSTRAINT [FK_StyleValue_Style] FOREIGN KEY ([styleId]) REFERENCES [dbo].[Style] ([_id])
+    CONSTRAINT [FK_StyleValue_Style] FOREIGN KEY ([styleId]) REFERENCES [dbo].[Style] ([_id]) ON DELETE CASCADE
 );
 
 go
@@ -310,8 +310,8 @@ CREATE TABLE [dbo].[Product] (
     CONSTRAINT [promotionalPrice] CHECK ([promotionalPrice]>=(0) AND [promotionalPrice]<=[price]),
     CONSTRAINT [quantity] CHECK ([quantity]>=(0)),
     CONSTRAINT [sold] CHECK ([sold]>=(0)),
-    CONSTRAINT [FK_Product_Category] FOREIGN KEY ([categoryId]) REFERENCES [dbo].[Category] ([_id]),
-    CONSTRAINT [FK_Product_Store] FOREIGN KEY ([storeId]) REFERENCES [dbo].[Store] ([_id])
+    CONSTRAINT [FK_Product_Category] FOREIGN KEY ([categoryId]) REFERENCES [dbo].[Category] ([_id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Product_Store] FOREIGN KEY ([storeId]) REFERENCES [dbo].[Store] ([_id]) ON DELETE CASCADE
 );
 
 go
@@ -403,8 +403,8 @@ CREATE TABLE [dbo].[UserFollowStore] (
     [createdAt]  DATE DEFAULT (getdate()) NOT NULL,
     [updatedAt]  DATE DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_UserFollowStore] PRIMARY KEY CLUSTERED ([_id] ASC),
-    CONSTRAINT [FK_UserFollowStore_User] FOREIGN KEY ([userId]) REFERENCES [dbo].[User] ([_id]),
-    CONSTRAINT [FK_UserFollowStore_Store] FOREIGN KEY ([storeId]) REFERENCES [dbo].[Store] ([_id])
+    CONSTRAINT [FK_UserFollowStore_User] FOREIGN KEY ([userId]) REFERENCES [dbo].[User] ([_id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserFollowStore_Store] FOREIGN KEY ([storeId]) REFERENCES [dbo].[Store] ([_id]) 
 );
 
 go
@@ -428,7 +428,7 @@ CREATE TABLE [dbo].[UserFollowProduct] (
     [createdAt]     DATE DEFAULT (getdate()) NOT NULL,
     [updatedAt]     DATE  DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_UserFollowProduct] PRIMARY KEY CLUSTERED ([_id] ASC),
-    CONSTRAINT [FK_UserFollowProduct_User] FOREIGN KEY ([userId]) REFERENCES [dbo].[User] ([_id]),
+    CONSTRAINT [FK_UserFollowProduct_User] FOREIGN KEY ([userId]) REFERENCES [dbo].[User] ([_id]) ON DELETE CASCADE,
     CONSTRAINT [FK_UserFollowProduct_Store] FOREIGN KEY ([productId]) REFERENCES [dbo].[Product] ([_id])
 );
 
@@ -466,9 +466,9 @@ CREATE TABLE [dbo].[Order] (
     CONSTRAINT [CK_amountFromUser] CHECK ([amountFromUser]>=(0)),
     CONSTRAINT [CK_amountToGD] CHECK ([amountToGD]>=(0)),
     CONSTRAINT [CK_amountToStore] CHECK ([amountToStore]>=(0)),
-    CONSTRAINT [FK_Order_User] FOREIGN KEY ([userId]) REFERENCES [dbo].[User] ([_id]),
+    CONSTRAINT [FK_Order_User] FOREIGN KEY ([userId]) REFERENCES [dbo].[User] ([_id]) ON DELETE CASCADE,
     CONSTRAINT [FK_Order_Store] FOREIGN KEY ([storeId]) REFERENCES [dbo].[Store] ([_id]),
-    CONSTRAINT [FK_Order_Delivery] FOREIGN KEY ([deliveryId]) REFERENCES [dbo].[Delivery] ([_id])
+    CONSTRAINT [FK_Order_Delivery] FOREIGN KEY ([deliveryId]) REFERENCES [dbo].[Delivery] ([_id]) ON DELETE CASCADE
 );
 
 go
@@ -495,7 +495,7 @@ CREATE TABLE [dbo].[OrderItem] (
     [updatedAt]     DATE			DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_OrderItem] PRIMARY KEY CLUSTERED ([_id] ASC),
     CONSTRAINT [Ck_count] CHECK ([count]>=(1)),
-    CONSTRAINT [FK_OrderItem_Order] FOREIGN KEY ([orderId]) REFERENCES [dbo].[Order] ([_id]),
+    CONSTRAINT [FK_OrderItem_Order] FOREIGN KEY ([orderId]) REFERENCES [dbo].[Order] ([_id]) ON DELETE CASCADE,
     CONSTRAINT [FK_OrderItem_Product] FOREIGN KEY ([productId]) REFERENCES [dbo].[Product] ([_id])
 );
 
@@ -520,8 +520,8 @@ CREATE TABLE [dbo].[Cart] (
     [createdAt]		DATE	DEFAULT (getdate()) NOT NULL,
     [updatedAt]		DATE	DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_Cart] PRIMARY KEY CLUSTERED ([_id] ASC),
+	CONSTRAINT [FK_Cart_User] FOREIGN KEY ([userId]) REFERENCES [dbo].[User] ([_id]) ON DELETE CASCADE,
     CONSTRAINT [FK_Cart_Store] FOREIGN KEY ([storeId]) REFERENCES [dbo].[Store] ([_id]),
-    CONSTRAINT [FK_Cart_User] FOREIGN KEY ([userId]) REFERENCES [dbo].[User] ([_id])
 );
 
 go
@@ -548,10 +548,9 @@ CREATE TABLE [dbo].[CartItem] (
     [updatedAt]     DATE			DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_CartItem] PRIMARY KEY CLUSTERED ([_id] ASC),
     CONSTRAINT [CK_Count_cartItem] CHECK ([count]>=(1)),
-    CONSTRAINT [FK_CartItem_Cart] FOREIGN KEY ([cartId]) REFERENCES [dbo].[Cart] ([_id]),
-    CONSTRAINT [FK_CartItem_Product] FOREIGN KEY ([productId]) REFERENCES [dbo].[Product] ([_id])
-);
-
+	CONSTRAINT [FK_CartItem_Cart] FOREIGN KEY ([cartId]) REFERENCES [dbo].[Cart] ([_id]) ON DELETE CASCADE,
+	CONSTRAINT [FK_CartItem_Product] FOREIGN KEY ([productId]) REFERENCES [dbo].[Product] ([_id]) 
+)
 go
 
 CREATE TRIGGER [dbo].[updateCartItem] 
@@ -575,8 +574,8 @@ CREATE TABLE [dbo].[Transaction] (
     [createdAt]     DATE               DEFAULT (getdate()) NOT NULL,
     [updatedAt]     DATE               DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_Transaction] PRIMARY KEY CLUSTERED ([_id] ASC),
-    CONSTRAINT [FK_Transaction_Store] FOREIGN KEY ([storeId]) REFERENCES [dbo].[Store] ([_id]),
-    CONSTRAINT [FK_Transaction_User] FOREIGN KEY ([userId]) REFERENCES [dbo].[User] ([_id])
+	CONSTRAINT [FK_Transaction_User] FOREIGN KEY ([userId]) REFERENCES [dbo].[User] ([_id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Transaction_Store] FOREIGN KEY ([storeId]) REFERENCES [dbo].[Store] ([_id]) 
 );
 
 go
@@ -605,7 +604,7 @@ CREATE TABLE [dbo].[Review] (
     [updatedAt]     DATE            DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_Review] PRIMARY KEY CLUSTERED ([_id] ASC),
     CONSTRAINT [stars] CHECK ([stars]>=(0) AND [stars]<=(5)),
-    CONSTRAINT [FK_Review_User] FOREIGN KEY ([orderId]) REFERENCES [dbo].[Order] ([_id]),
+    CONSTRAINT [FK_Review_User] FOREIGN KEY ([orderId]) REFERENCES [dbo].[User] ([_id]) ON DELETE CASCADE,
     CONSTRAINT [FK_Review_Order] FOREIGN KEY ([orderId]) REFERENCES [dbo].[Order] ([_id]),
     CONSTRAINT [FK_Review_Product] FOREIGN KEY ([productId]) REFERENCES [dbo].[Product] ([_id]),
     CONSTRAINT [FK_Review_Store] FOREIGN KEY ([storeId]) REFERENCES [dbo].[Store] ([_id])
