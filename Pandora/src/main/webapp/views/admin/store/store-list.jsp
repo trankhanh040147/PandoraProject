@@ -46,6 +46,7 @@
 									<th>Tên cửa hàng</th>
 									<th>Id cửa hàng</th>
 									<th>Trạng thái</th>
+									<th>Đánh giá</th>
 									<th style="width: 40% ;text-align: center; ">Mô tả</th>
 									<th></th>
 								</tr>
@@ -57,13 +58,14 @@
 									<td style="color:blue;">${loop.count }</td>
 									<td>${x.getName()}</td>
 									<td>${x.getId()}</td>
-									<td> 
-									<c:if test="${x.isOpen()}">Đang hoạt động</c:if>
-									<c:if test="${!x.isOpen()}">Không hoạt động</c:if>
+									<td>
+										<c:if test="${x.isActive()}">Đang hoạt động</c:if>
+										<c:if test="${!x.isActive()}">Không hoạt động</c:if>
 									</td>
+									<td>${x.rating}*</td>
 									<td>${x.getBio() }</td>
 									<td><a
-										href="${pageContext.request.contextPath}/vendor/informationStore?sid=${x.getId()}"
+										href="${pageContext.request.contextPath}/admin/store/detail?storeId=${x.getId()}"
 										class=" fa fa-eye"></a></td>
 								</tr>
 							</tbody>

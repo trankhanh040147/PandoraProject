@@ -15,7 +15,7 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 
 	@Override
 	public void Add(Product product) {
-		String sql = "INSERT INTO [Product](name,description,price, promotionalPrice,quantity,sold,isActive,isSelling,listImages,categoryId,styleValueIds,storeId,rating) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?))";
+		String sql = "INSERT INTO [Product](name,description,price, promotionalPrice,quantity,listImages,categoryId,styleValueIds,storeId) VALUES(?,?,?,?,?,?,?,?,?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -25,14 +25,10 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 			ps.setDouble(3, product.getPrice());
 			ps.setDouble(4, product.getPromotionalPrice());
 			ps.setInt(5, product.getQuantity());
-			ps.setInt(6, product.getSold());
-			ps.setBoolean(7, product.isActive());
-			ps.setBoolean(8, product.isSelling());
-			ps.setString(9, UtilClass.toStr_StrList(product.getListImages()));
-			ps.setInt(10, product.getCategoryId());
-			ps.setString(11, UtilClass.toStr_IntList(product.getStyleValueIds()));
-			ps.setInt(12, product.getStoreId());
-			ps.setInt(13, product.getRating());
+			ps.setString(6, UtilClass.toStr_StrList(product.getListImages()));
+			ps.setInt(7, product.getCategoryId());
+			ps.setString(8, UtilClass.toStr_IntList(product.getStyleValueIds()));
+			ps.setInt(9, product.getStoreId());
 			ps.execute();
 
 		} catch (Exception e) {

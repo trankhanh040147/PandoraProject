@@ -27,7 +27,7 @@
 				<div class="main-card mb-3 card" style="width: 800px;margin-left:200px ">
 					<div class="card-body" >
 						<h5 class="card-title" style="margin-left:300px">Điền thông tin tạo sản phẩm</h5>
-						<form action="vendor/addProduct" method="post">
+						<form enctype="multipart/form-data" action="${Url}vendor/addProduct" method="post">
 							<div class="position-relative form-group">
 								<label for="name" class="">Tên sản phẩm </label><input
 									name="name" id="exampleEmail" placeholder="Nhập tên sản phẩm"
@@ -52,37 +52,51 @@
 									name="quantity" id="quantity" placeholder="Nhập số lượng sản phẩm"
 									type="text" class="form-control">
 							</div>
+								
+								<div class="position-relative form-group">
+								<label for="price" class="">Giá niêm yết </label><input
+									name="price" id="price" placeholder="Nhập giá sản phẩm"
+									type="text" class="form-control">
+							</div>
 							<div class="position-relative form-group">
 								<label for="category" class="">Phân loại </label>
 								<select id="cars" name="category">
 									<c:forEach items="${listCategory}" var ="x">
-								  <option>${x.name}</option>
+								  <option value="${x.id}">${x.name}</option>
 								</c:forEach>
 								</select>
 							</div>
                             <div class="position-relative form-group">
 								<label for="Style-color" class="">Màu </label>
 								<select id="cars" name="Style-color">
-								<c:forEach items="${listStyle}" var ="y">
-								  <option>${y.name}</option>
+								<c:forEach items="${listStyleColor}" var ="y">
+								  <option value="${y.id}">${y.name}</option>
 								</c:forEach>
 								</select>
 							</div>
 							 <div class="position-relative form-group">
 								<label for="Style-size" class="">Kích cỡ </label>
 								<select id="cars" name="Style-size">
-									<option value="XS" selected>XS </option>
-									<option value="S"> S</option>
-									<option value="L">L </option>
-									<option value="XL">XL</option>
+									<c:forEach items="${listStylesize}" var ="z">
+								  <option value="${z.id }">${z.name}</option>
+								</c:forEach>
+									
+								</select>
+							</div>
+								 <div class="position-relative form-group">
+								<label for="Style-size" class="">Loai:</label>
+								<select id="cars" name="Style-type">
+									<c:forEach items="${listStyletype}" var ="a">
+								  <option value="${a.id }">${a.name}</option>
+								</c:forEach>
 									
 								</select>
 							</div>
 							 <div class="position-relative form-group">
-								<label for="storeId" class="">Mã cửa hàng bán sản phẩm </label>
+								<label for="storeId" class="">Cửa  hàng bán sản phẩm :</label>
 								<select id="cars" name="storeId">
-									<c:forEach items="${idStore}" var="x">
-									<option value="${x}" >${x}</option>
+									<c:forEach items="${listStoreId}" var="a">
+									<option value="${a.id}" >${a.name}</option>
 									</c:forEach>
 									
 									
