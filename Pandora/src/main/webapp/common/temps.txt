@@ -1,0 +1,85 @@
+-----------------pageContext ~ http://localhost:8090/Pandora ~ webapp-----------------
+${pageContext.request.contextPath}
+<c:url value=""/>
+
+-----------------taglib-----------------
+<%@ include file="/common/taglib.jsp"%>
+
+-----------------dir-----------------
+<c:set value="${pageContext.request.contextPath}/assets-web" var="dir"/>
+<c:set value="${pageContext.request.contextPath}/assets" var="dir_v"/>
+
+-----------------Account session-----------------
+HttpSession session = req.getSession();
+User account_cur = (User) session.getAttribute("account");
+
+-----------------Alert: Gắn css,js + gọi -----------------
+<!--=========================================================================================================================-->
+	<!-- CSS và JS cho Notify alert -->
+	<link href="${pageContext.request.contextPath}/assets-web/css/themify-icons.css" rel="stylesheet">
+	<link rel="stylesheet"
+		href="${pageContext.request.contextPath}/assets-web/css/alert.css">
+	<link rel="stylesheet"
+		href="${pageContext.request.contextPath}/assets-web/css/animate.min.css">
+	
+	<!-- Jquery bản cũ, có thể dùng jquery hoặc jquery-min bản mới -->
+	<script
+		src="${pageContext.request.contextPath}/assets-web/js/jquery-1.10.2.js"
+		type="text/javascript"></script>
+	
+	<script src="${pageContext.request.contextPath}/assets-web/js/demo.js"
+		type="text/javascript">></script>
+	<script
+		src="${pageContext.request.contextPath}/assets-web/js/bootstrap-notify.js"></script>
+	<!-- CSS và JS cho Notify alert -->
+	
+	<!--  Hiển thị alert -->
+	<c:if test="${alert!=null}">
+		<script type="text/javascript">
+				window.onload = function() {
+					demo.showNtf(${alertType}, "${alert}", "${alertIcon}");
+				};
+			</script>
+	</c:if>
+	<!--  Hiển thị alert -->
+<!--=========================================================================================================================-->
+
+-----------------CSS-----------------
+<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+-----------------onclick event-----------------
+onclick="location.href='${pageContext.request.contextPath}/home'"
+
+
+----------------- jquery Notify -----------------
+demo.showNtf
+- success: 2
+- warn: 3
+- error: 4
+- info: 5
+
+<script type="text/javascript">
+	window.onload = function() {
+		demo.showNtf(2, 'Success', 'ti-check');
+		};
+</script>
+
+<script type="text/javascript">
+	window.onload = function() {
+		demo.showNtf(3, 'Warning', 'ti-na');
+		};
+</script>
+
+<script type="text/javascript">
+	window.onload = function() {
+		demo.showNtf(4, 'error', 'ti-close');
+		};
+</script>
+
+<script type="text/javascript">
+	window.onload = function() {
+		demo.showNtf(5, 'Info', 'ti-info');
+		};
+</script>
+
