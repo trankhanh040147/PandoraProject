@@ -57,7 +57,10 @@
 									<td style="color:blue;">${loop.count }</td>
 									<td>${x.getName()}</td>
 									<td>${x.getId()}</td>
-									<td>${x.isOpen() }</td>
+									<td> 
+									<c:if test="${x.isOpen()}">Đang hoạt động</c:if>
+									<c:if test="${!x.isOpen()}">Không hoạt động</c:if>
+									</td>
 									<td>${x.getBio() }</td>
 									<td><a
 										href="${pageContext.request.contextPath}/vendor/informationStore?sid=${x.getId()}"
