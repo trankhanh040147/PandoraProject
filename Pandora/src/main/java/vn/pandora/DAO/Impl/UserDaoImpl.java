@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class UserDaoImpl extends ConnectJDBC implements iUserDao {
 				user.setEmailActive(rs.getBoolean("isEmailActive"));
 				user.setPhoneActive(rs.getBoolean("isPhoneActive"));
 				user.setPassword(rs.getString("password"));
+				user.setAddress(rs.getString("addresses"));
 				user.setRole(rs.getString("role"));
 				user.setAddress(sql);
 				user.setAvatar(rs.getString("avatar"));
@@ -83,7 +85,7 @@ public class UserDaoImpl extends ConnectJDBC implements iUserDao {
 					user.setPhoneActive(rs.getBoolean("isPhoneActive"));
 					user.setPassword(rs.getString("password"));
 					user.setRole(rs.getString("role"));
-					user.setAddress(sql);
+					user.setAddress(rs.getString("addresses"));
 					user.setAvatar(rs.getString("avatar"));
 					user.setCover(rs.getString("cover"));
 					user.setE_wallet(rs.getDouble("e_wallet"));
@@ -156,6 +158,7 @@ public class UserDaoImpl extends ConnectJDBC implements iUserDao {
 				user.setEmailActive(rs.getBoolean("isEmailActive"));
 				user.setPhoneActive(rs.getBoolean("isPhoneActive"));
 				user.setPassword(rs.getString("password"));
+				user.setAddress(rs.getString("addresses"));
 				user.setRole(rs.getString("role"));
 				user.setAvatar(rs.getString("avatar"));
 				user.setCover(rs.getString("cover"));
@@ -194,6 +197,44 @@ public class UserDaoImpl extends ConnectJDBC implements iUserDao {
 				user.setId_card(rs.getString("id_card"));
 				user.setPhone(rs.getString("phone"));
 				user.setEmailActive(rs.getBoolean("isEmailActive"));
+				user.setPhoneActive(rs.getBoolean("isPhoneActive"));
+				user.setAddress(rs.getString("addresses"));
+				user.setPassword(rs.getString("password"));
+				user.setRole(rs.getString("role"));
+				user.setAvatar(rs.getString("avatar"));
+				user.setCover(rs.getString("cover"));
+				user.setE_wallet(rs.getDouble("e_wallet"));
+				user.setCreatedAt(rs.getDate("createdAt"));
+				user.setUpdatedAt(rs.getDate("updatedAt"));
+
+				return user;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public User findById(int id) {
+		String sql = "Select * From dbo.[User] where _id=?";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				User user = new User();
+
+				user.setId(rs.getInt("_id"));
+				user.setFirstname(rs.getString("firstname"));
+				user.setLastname(rs.getString("lastname"));
+				user.setEmail(rs.getString("email"));
+				user.setId_card(rs.getString("id_card"));
+				user.setPhone(rs.getString("phone"));
+				user.setEmailActive(rs.getBoolean("isEmailActive"));
+				user.setAddress(rs.getString("addresses"));
 				user.setPhoneActive(rs.getBoolean("isPhoneActive"));
 				user.setPassword(rs.getString("password"));
 				user.setRole(rs.getString("role"));
@@ -256,9 +297,40 @@ public class UserDaoImpl extends ConnectJDBC implements iUserDao {
 		}
 	}
 	
+	//Chức năng thay đổi thông tin tài khoản của người mua
+	@Override
+	public void editCustomer(User user) {
+		String sql = "Update dbo.[User] Set firstname=?, lastname=?, id_card=?,email=?, "
+				+ "phone=?,addresses=?, avatar=?, password=?, e_wallet=?, isEmailActive=?, isPhoneActive=? WHERE _id=?";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			System.out.println(user);
+			ps.setString(1, user.getFirstname());
+			ps.setString(2, user.getLastname());
+			ps.setString(3, user.getId_card());
+			ps.setString(4, user.getEmail());
+			ps.setString(5, user.getPhone());
+			ps.setString(6, user.getAddress());
+			ps.setString(7, user.getAvatar());
+			ps.setString(8, user.getPassword());
+			ps.setDouble(9, user.getE_wallet());
+			ps.setBoolean(10, user.isEmailActive());
+			ps.setBoolean(11, user.isPhoneActive());
+			ps.setInt(12, user.getId());
+			
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public static void main(String[] args) {
 		iUserDao userDao= new UserDaoImpl();
 	}
+
+	
 	
 }

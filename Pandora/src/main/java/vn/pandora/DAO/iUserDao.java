@@ -19,4 +19,8 @@ public interface iUserDao {
 	List<User> findUser(String infoUser, int index, int pagesize);
 
 	User getOne(int id);
+
+	void editCustomer(User user);
+
+	User findById(int id);
 }

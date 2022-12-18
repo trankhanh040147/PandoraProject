@@ -1,11 +1,13 @@
 package vn.pandora.Service.Impl;
 
+import java.io.File;
 import java.util.List;
 
 import vn.pandora.DAO.iUserDao;
 import vn.pandora.DAO.Impl.UserDaoImpl;
 import vn.pandora.Model.User;
 import vn.pandora.Service.iUserService;
+import vn.pandora.Util.Constant;
 
 public class UserServiceImpl implements iUserService {
 
@@ -45,6 +47,28 @@ public class UserServiceImpl implements iUserService {
 	@Override
 	public User getOne(int id) {
 		return userDao.getOne(id);
+	}
+
+	@Override
+	public void editCustomer(User newUserInfo) {
+		User oldUserInfo = userDao.findById(newUserInfo.getId());
+		oldUserInfo.setFirstname(newUserInfo.getFirstname());
+		if (newUserInfo.getAvatar() != null) {
+			// XOA ANH CU DI
+			String fileName = oldUserInfo.getAvatar();
+			final String dir = Constant.DIR;
+			File file = new File(dir + "/avatar" + fileName);
+			if (file.exists()) {
+				file.delete();
+			}
+			oldUserInfo.setAvatar(newUserInfo.getAvatar());
+		}
+		userDao.editCustomer(newUserInfo);
+	}
+
+	@Override
+	public User findById(int id) {
+		return userDao.findById(id);
 	}
 
 }

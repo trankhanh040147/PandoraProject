@@ -61,4 +61,12 @@ public class Cart {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
+	@Override
+	public String toString() {
+		return "Cart [id=" + id + ", userId=" + userId + ", storeId=" + storeId + ", createdAt=" + createdAt
+				+ ", updatedAt=" + updatedAt + "]";
+	}
+	
+	
 }

@@ -17,7 +17,7 @@ public class LogoutController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//Xoá session tài khoản hiện tại
 		HttpSession session = req.getSession(false);
-		session.setAttribute("account", null);
+		session.removeAttribute("account");
 		
 		//Xoá cookie tài khoản hiện tại
 		Cookie[] theCookie = req.getCookies();

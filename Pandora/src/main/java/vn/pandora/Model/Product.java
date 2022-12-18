@@ -14,6 +14,7 @@ public class Product {
 	private boolean isActive;
 	private boolean isSelling;
 	private List<String> listImages;
+
 	public int getId() {
 		return id;
 	}
@@ -174,5 +175,15 @@ public class Product {
 		this.updatedAt = updatedAt;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", promotionalPrice=" + promotionalPrice + ", quantity=" + quantity + ", sold=" + sold + ", isActive="
+				+ isActive + ", isSelling=" + isSelling + ", listImages=" + listImages + ", categoryId=" + categoryId
+				+ ", styleValueIds=" + styleValueIds + ", storeId=" + storeId + ", rating=" + rating + ", createdAt="
+				+ createdAt + ", updatedAt=" + updatedAt + "]";
+	}
 	
+	
+
 }

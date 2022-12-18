@@ -8,17 +8,18 @@ import vn.pandora.Model.Product;
 import vn.pandora.Service.iProductService;
 
 public class ProductServiceImpl implements iProductService {
-     private ProductDaoImpl productDao =new ProductDaoImpl();
+	private ProductDaoImpl productDao = new ProductDaoImpl();
+
 	@Override
 	public void Add(Product product) {
 		productDao.Add(product);
-		
+
 	}
 
 	@Override
 	public void Update(Product product) {
-	    productDao.Update(product);
-		
+		productDao.Update(product);
+
 	}
 
 	@Override
@@ -32,8 +33,18 @@ public class ProductServiceImpl implements iProductService {
 	}
 
 	@Override
-	public List<Product> GetAll() {
-		return productDao.GetAll();
+	public List<Product> GetAll(int index, int pagesize) {
+		return productDao.GetAll(index, pagesize);
+	}
+
+	@Override
+	public List<Product> findTop_Promo(int index, int pagesize) {
+		return productDao.findTop_Promo(index, pagesize);
+	}
+
+	@Override
+	public List<Product> findTop_Created(int index, int pagesize) {
+		return productDao.findTop_Created(index, pagesize);
 	}
 
 }

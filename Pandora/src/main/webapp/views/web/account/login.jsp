@@ -2,6 +2,7 @@
     <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c"%>
     <html lang="en">
+<%@ include file="/common/taglib.jsp" %>
 
 <head>
     <meta charset="UTF-8">
@@ -71,11 +72,11 @@
                         <input type="submit"  value="Đăng Nhập">
                     </div>
                     <div class="input-form">
-                        <p>Bạn Chưa Có Tài Khoản Mua Sắm? <a href="${pageContext.request.contextPath}/views/account/register-customer.jsp">Đăng Ký (Mua) </a></p>
-                        <p>Bạn Chưa Có Tài Khoản Bán Hàng? <a href="${pageContext.request.contextPath}/views/account/register-vendor.jsp">Đăng Ký (Bán) </a></p>
+                        <p>Bạn Chưa Có Tài Khoản Mua Sắm? <a href="${Url}register/customer">Đăng Ký (Mua) </a></p>
+                        <p>Bạn Chưa Có Tài Khoản Bán Hàng? <a href="${Url}register/vendor">Đăng Ký (Bán) </a></p>
                     </div>
                     <div class="input-form">
-                        <p>Quên mật khẩu <a href="${pageContext.request.contextPath}/views/account/forgot.jsp">Lấy lại mật khẩu</a></p>
+                        <p>Quên mật khẩu <a href="${Url}forgot">Lấy lại mật khẩu</a></p>
                     </div>
                 </form>
             </div>

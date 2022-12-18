@@ -7,6 +7,9 @@ import java.util.List;
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import vn.pandora.Model.User;
 
 public class Constant {
 	static String dir = Paths.get("").toAbsolutePath().toString();
@@ -38,6 +41,28 @@ public class Constant {
 			req.setAttribute("alertType", 5);
 			req.setAttribute("alert", cmt);
 			req.setAttribute("alertIcon", "ti-info");
+		}
+	}
+	
+	public static void setAlertSession(HttpServletRequest req, HttpServletResponse resp, String alertType, String cmt) {
+		HttpSession session = req.getSession();
+		
+		if (alertType == "success") {
+			session.setAttribute("alertType", 2);
+			session.setAttribute("alert", cmt);
+			session.setAttribute("alertIcon", "ti-check");
+		} else if (alertType == "warning") {
+			session.setAttribute("alertType", 3);
+			session.setAttribute("alert", cmt);
+			session.setAttribute("alertIcon", "ti-na");
+		} else if (alertType == "error") {
+			session.setAttribute("alertType", 4);
+			session.setAttribute("alert", cmt);
+			session.setAttribute("alertIcon", "ti-close");
+		} else {
+			session.setAttribute("alertType", 5);
+			session.setAttribute("alert", cmt);
+			session.setAttribute("alertIcon", "ti-info");
 		}
 	}
 	

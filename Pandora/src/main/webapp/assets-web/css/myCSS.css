@@ -74,9 +74,9 @@
   cursor: pointer;
 }
 
-.fas {
+/* .fas {
   font-size: 20px;
-}
+} */
 
 .profilepic__text {
   text-transform: uppercase;
@@ -99,4 +99,25 @@
 
 .card-user .avatar-search.border-white {
 	border: 5px solid #FFFFFF;
+}
+
+/*  Avatar top-bar */
+.avatar-topbar-border-white{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-size: 16px;
+    list-style: none;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Muli', "Helvetica", Arial, sans-serif;
+    line-height: 1.42857;
+    color: #9A9A9A;
+    box-sizing: border-box;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: -20px;
+    margin-top: -24px;
+    border: 2px solid #111;
 }

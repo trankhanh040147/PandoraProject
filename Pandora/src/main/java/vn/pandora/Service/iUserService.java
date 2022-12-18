@@ -9,6 +9,8 @@ public interface iUserService {
 	User login(String email, String passwd);
 
 	User findByEmail(String email);
+	
+	User findById(int id);
 
 	void registerCustomer(User user);
 
@@ -19,4 +21,6 @@ public interface iUserService {
 	List<User> findUser(String infoUser, int index, int pagesize);
 
 	User getOne(int id);
+
+	void editCustomer(User user);
 }

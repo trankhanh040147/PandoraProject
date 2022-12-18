@@ -47,32 +47,15 @@
 	<link href="${dir}/css/myCSS.css" rel="stylesheet">
 	<!--===============================================================================================-->
 	
-	<!--===============================================================================================-->
-	<!-- JavaScript Libraries -->
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-	<script src="${dir}/lib/easing/easing.min.js"></script>
-	<script src="${dir}/lib/owlcarousel/owl.carousel.min.js"></script>
-	
-	<!-- Contact Javascript File -->
-	<script src="${dir}/mail/jqBootstrapValidation.min.js"></script>
-	<script src="${dir}/mail/contact.js"></script>
-	
-	<!-- Template Javascript -->
-	<script src="${dir}/js/main.js"></script>
-	<!--===============================================================================================-->
-	
 	<!--=========================================================================================================================-->
 	<!-- CSS và JS cho Notify alert -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	
 	<link href="${pageContext.request.contextPath}/assets-web/css/themify-icons.css" rel="stylesheet">
 	<link rel="stylesheet"
 		href="${pageContext.request.contextPath}/assets-web/css/alert.css">
 	<link rel="stylesheet"
 		href="${pageContext.request.contextPath}/assets-web/css/animate.min.css">
-	<script
-		src="${pageContext.request.contextPath}/assets-web/js/jquery-1.10.2.js"
-		type="text/javascript"></script>
 	
 	<script src="${pageContext.request.contextPath}/assets-web/js/demo.js"
 		type="text/javascript">></script>
@@ -81,28 +64,52 @@
 	<!-- CSS và JS cho Notify alert -->
 	
 	<!--  Hiển thị alert -->
-	<c:if test="${alert!=null}">
+	<c:if test="${requestScope.alert!=null}">
 		<script type="text/javascript">
 				window.onload = function() {
-					demo.showNtf(${alertType}, "${alert}", "${alertIcon}");
+					demo.showNtf(${requestScope.alertType}, "${requestScope.alert}", "${requestScope.alertIcon}");
 				};
 			</script>
-	</c:if>
+	</c:if> 
 	<!--  Hiển thị alert -->
+	
+	
+	<!--  Hiển thị alert trên session-->
+	<c:if test='${sessionScope.alert != null}'>
+		<script type="text/javascript">
+				window.onload = function() {
+					demo.showNtf(${sessionScope.alertType}, "${sessionScope.alert}", "${sessionScope.alertIcon}");
+				};
+		</script>
+		<c:remove var="alertType" scope="session" />
+		<c:remove var="alert" scope="session" />
+		<c:remove var="alertIcon" scope="session" />
+		
+	</c:if>  
+	<!--  Hiển thị alert trên session-->
 	<!--=========================================================================================================================-->
 
 </head>
 <body>
-
-	<!--  Gắn header theo role -->
+<!--  Gắn header theo role -->
 	<c:set value="${account.role}" var="role" />
 
 	<c:choose>
 		<c:when test="${role == 'customer'}">
-			<jsp:include page="/common/web/header-customer.jsp"></jsp:include>
+			<c:if test="${fn:endsWith(pageContext.request.requestURI, 'home')}">
+			    <jsp:include page="/common/web/header-customer-home.jsp"></jsp:include>
+			</c:if>	
+			<c:if test="${not fn:endsWith(pageContext.request.requestURI, 'home')}">
+				<jsp:include page="/common/web/header-customer.jsp"></jsp:include>
+			</c:if>		
 		</c:when>
 		<c:otherwise>
-			<jsp:include page="/common/web/header-guest.jsp"></jsp:include>
+			<c:if test="${fn:endsWith(pageContext.request.requestURI, 'home')}">
+				<jsp:include page="/common/web/header-guest-home.jsp"></jsp:include>
+			</c:if>	
+			<c:if test="${not fn:endsWith(pageContext.request.requestURI, 'home')}">
+				<jsp:include page="/common/web/header-guest.jsp"></jsp:include>
+			</c:if>
 		</c:otherwise>
 	</c:choose>
 	<!--  Gắn header theo role -->
@@ -113,7 +120,28 @@
 
 	<!--=== Footer v4 ===-->
 	<jsp:include page="/common/web/footer-web.jsp"></jsp:include>
+	
 	<!--=== End Footer v4 ===-->
+	
+	<!--===============================================================================================-->
+	<!--  Scripts  -->
+	
+	<!-- JavaScript Libraries -->
+	<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<script src="${dir}/lib/easing/easing.min.js"></script>
+	<script src="${dir}/lib/owlcarousel/owl.carousel.min.js"></script>
+	
+	<!-- Contact Javascript File -->
+	<script src="${dir}/mail/jqBootstrapValidation.min.js"></script>
+	<script src="${dir}/mail/contact.js"></script>
+	
+	<!-- Template Javascript -->
+	<script src="${dir}/js/main.js"></script>
+	
+	<!--  Scripts  -->
+	<!--===============================================================================================-->
+	
 </body>
 
 

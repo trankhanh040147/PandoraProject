@@ -46,7 +46,7 @@
         </div>
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a href="" class="text-decoration-none">
+                <a href="${Url}home" class="text-decoration-none">
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
                 </a>
             </div>
@@ -63,13 +63,13 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="" class="btn border">
+                <a href="${Url}login" class="btn border">
                     <i class="fas fa-heart text-primary"></i>
-                    <span class="badge">0</span>
+                    <span class="badge"></span>
                 </a>
-                <a href="" class="btn border">
+                <a href="${Url}login" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
+                    <span class="badge"></span>
                 </a>
             </div>
         </div>
@@ -118,22 +118,22 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                        
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="?????" class="nav-item nav-link"><i class="fas fa-home text-primary mr-1"></i>Trang chủ</a>
+                            <a href="${Url}home" class="nav-item nav-link"><i class="fas fa-home text-primary mr-1"></i>Trang chủ</a>
                             <a href="?????" class="nav-item nav-link"><i class="fas fa-x-ray text-primary mr-1"></i>Danh mục</a>
                             <a href="?????" class="nav-item nav-link active"><i class="fas fa-search text-primary mr-1"></i>Tìm kiếm</a>
                             <a href="contact.html" class="nav-item nav-link"><i class="fas fa-chalkboard-teacher text-primary mr-1"></i>Liên hệ</a>
                         </div>
                         
                         <div class="navbar-nav ml-auto py-0">
-                         <a href="<c:url value="/login"/>" class="nav-item nav-link"> <i class="fas fa-sign-in-alt text-primary mr-1"></i>Đăng nhập</a>
-                         <div class="nav-item dropdown">
-								<a href="?????" class="nav-link dropdown-toggle"
-									data-toggle="dropdown"><i class="fas fa-user-plus text-primary mr-1"></i>Đăng ký</a>
-								<div class="dropdown-menu rounded-0 m-0">
-									<a href="<c:url value="/register/customer"/>" class="dropdown-item">Người mua</a> 
-									<a href="<c:url value="/register/vendor"/>" class="dropdown-item">Người bán</a>
-								</div>
-						</div>   
+	                         <a href="<c:url value="/login"/>" class="nav-item nav-link"> <i class="fas fa-sign-in-alt text-primary mr-1"></i>Đăng nhập</a>
+	                         <div class="nav-item dropdown">
+									<a href="?????" class="nav-link dropdown-toggle"
+										data-toggle="dropdown"><i class="fas fa-user-plus text-primary mr-1"></i>Đăng ký</a>
+									<div class="dropdown-menu rounded-0 m-0">
+										<a href="<c:url value="/register/customer"/>" class="dropdown-item">Người mua</a> 
+										<a href="<c:url value="/register/vendor"/>" class="dropdown-item">Người bán</a>
+									</div>
+							</div>   
                         </div>
                     </div>
                 </nav>

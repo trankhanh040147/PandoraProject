@@ -46,7 +46,7 @@
         </div>
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a href="" class="text-decoration-none">
+                <a href="${Url}home" class="text-decoration-none">
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
                 </a>
             </div>
@@ -65,11 +65,11 @@
             <div class="col-lg-3 col-6 text-right">
                 <a href="" class="btn border">
                     <i class="fas fa-heart text-primary"></i>
-                    <span class="badge">0</span>
+                    <span class="badge"></span>
                 </a>
-                <a href="" class="btn border">
+                <a href="${Url}cart" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
+                    <span class="badge"></span>
                 </a>
             </div>
         </div>
@@ -92,7 +92,7 @@
                             <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
                                 <a href="?????" class="dropdown-item">Quần áo nữ</a>
                                 <a href="?????" class="dropdown-item">Quần áo Nam</a>
-                                <a href="?????" class="dropdown-item">Cái quần què chân chỗi chưởi</a>
+                                <a href="?????" class="dropdown-item"></a>
                             </div>
                         </div>
                         <a href="?????" class="nav-item nav-link">Shirts</a>
@@ -118,24 +118,35 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="?????" class="nav-item nav-link"><i class="fas fa-home text-primary mr-1"></i>Trang chủ</a>
-                            <a href="?????" class="nav-item nav-link"><i class="fas fa-x-ray text-primary mr-1"></i>Danh mục</a>
+                            <a href="${Url}home" class="nav-item nav-link"><i class="fas fa-home text-primary mr-1"></i>Trang chủ</a>
+                            <a href="${Url}" class="nav-item nav-link"><i class="fas fa-x-ray text-primary mr-1"></i>Danh mục</a>
                             <a href="?????" class="nav-item nav-link active"><i class="fas fa-search text-primary mr-1"></i>Tìm kiếm</a>
                             <a href="contact.html" class="nav-item nav-link"><i class="fas fa-chalkboard-teacher text-primary mr-1"></i>Liên hệ</a>
                         </div>
                         
                         <div class="navbar-nav ml-auto py-0">
+                        
 							<div class="nav-item dropdown">
-								<a href="?????" class="nav-link dropdown-toggle"
-									data-toggle="dropdown"><i
-									class="fas fa-id-card text-primary mr-1"></i>Tài khoản</a>
+								<a href="<c:url value="/customer/account/profile"/>" class="nav-link dropdown-toggle" data-toggle="dropdown">
+									<!--Avatar topbar-->
+									<c:url value="/image?fname=${account.avatar}" var="imgUrl"></c:url>
+									<img class="avatar-topbar-border-white"
+											src="${imgUrl}"
+												onerror="this.src='${pageContext.request.contextPath}/assets/img/avatar/student.jpg';this.onerror='';"
+												onclick="location.href='${pageContext.request.contextPath}/student/info'"
+												alt="..." />
+									${account.lastname}  ${account.firstname}
+									<!--Avatar topbar-->
+								</a>
 								<div class="dropdown-menu rounded-0 m-0">
-									<a href="<c:url value="/customer/account/profile"/>" class="dropdown-item">Thay đổi thông
-										tin</a> <a href="<c:url value="/customer/account/password"/>" class="dropdown-item">Thay đổi
-										mật khẩu</a>
+										<a href="<c:url value="/customer/account/profile"/>"
+											class="dropdown-item">Thay đổi thông tin</a> <a
+											href="<c:url value="/customer/account/password"/>"
+											class="dropdown-item">Thay đổi mật khẩu</a>
 								</div>
 							</div>
-							<a href="?????" class="nav-item nav-link"><i
+							
+							<a href="<c:url value="/logout"/>" class="nav-item nav-link"><i
 									class="fas fa-sign-out-alt text-primary mr-1"></i>Đăng xuất</a>
                         </div>
                     </div>
