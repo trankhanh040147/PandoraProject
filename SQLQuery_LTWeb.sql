@@ -193,6 +193,8 @@ Insert Into Style(name, categoryIds) values (N'Type', '3,5')
 
 Go
 
+Select * From Style where _id = 2
+
 CREATE TRIGGER [dbo].[updateStyle] 
 ON [dbo].[Style]
 FOR UPDATE 
