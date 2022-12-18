@@ -152,4 +152,13 @@ public class Store {
 	private double e_wallet;
 	private Date createdAt;
 	private Date updatedAt;
+
+	@Override
+	public String toString() {
+		return "Store [id=" + id + ", name=" + name + ", bio=" + bio + ", ownerId=" + ownerId + ", isActive=" + isActive
+				+ ", isOpen=" + isOpen + ", avatar=" + avatar + ", cover=" + cover + ", featured_image="
+				+ featured_image + ", rating=" + rating + ", e_wallet=" + e_wallet + ", createdAt=" + createdAt
+				+ ", updatedAt=" + updatedAt + "]";
+	}
+
 }

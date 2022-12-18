@@ -3,6 +3,8 @@ package vn.pandora.Model;
 import java.sql.Date;
 import java.util.List;
 
+import org.eclipse.jdt.internal.compiler.lookup.ImplicitNullAnnotationVerifier;
+
 public class OrderItem {
 
 	public OrderItem() {
@@ -18,6 +20,38 @@ public class OrderItem {
 		this.count = count;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+	}
+
+	public OrderItem(int id, int orderId, String nameProduct, int productId, int count, Date createdAt, Date updatedAt,
+			Double priceProduct) {
+		this.id = id;
+		this.orderId = orderId;
+		this.nameProduct = nameProduct;
+		this.productId = productId;
+
+		this.count = count;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.priceProduct = priceProduct;
+	}
+
+	public double getPriceProduct() {
+		return priceProduct;
+	}
+
+	public void setPriceProduct(double priceProduct) {
+		this.priceProduct = priceProduct;
+	}
+
+	private double priceProduct;
+	private String nameProduct;
+
+	public String getNameProduct() {
+		return nameProduct;
+	}
+
+	public void setNameProduct(String nameProduct) {
+		this.nameProduct = nameProduct;
 	}
 
 	private int id;
@@ -84,4 +118,13 @@ public class OrderItem {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
+	@Override
+	public String toString() {
+		return "OrderItem [priceProduct=" + priceProduct + ", nameProduct=" + nameProduct + ", id=" + id + ", orderId="
+				+ orderId + ", productId=" + productId + ", styleValueIds=" + styleValueIds + ", count=" + count
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+	}
+	
+	
 }

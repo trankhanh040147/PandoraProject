@@ -46,5 +46,6 @@ public class ProductServiceImpl implements iProductService {
 	public List<Product> findTop_Created(int index, int pagesize) {
 		return productDao.findTop_Created(index, pagesize);
 	}
+	
 
 }

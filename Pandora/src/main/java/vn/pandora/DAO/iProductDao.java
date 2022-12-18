@@ -19,4 +19,8 @@ public interface iProductDao {
 
 	List<Product> findTop_Created(int index, int pagesize);
 
+	void permit(Product product);
+
+	void revoke(Product product);
+
 }

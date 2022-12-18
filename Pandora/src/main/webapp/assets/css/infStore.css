@@ -26,7 +26,7 @@ form-group,form-control,border-input,btn btn-info btn-fill btn-wd
   height: 100px;
   border-radius: 50%;
   position: relative;
-  margin-bottom: 15px; }
+  margin-bottom: 5px; }
   .card-user .avatar.border-white {
     border: 5px solid #FFFFFF; }
   .card-user .avatar.border-gray {

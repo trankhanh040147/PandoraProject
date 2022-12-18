@@ -15,8 +15,8 @@ public class OrderServiceImpl implements iOrderService {
 	}
 
 	@Override
-	public List<Order> GetAll() {
-		return orderDao.GetAll();
+	public List<Order> GetAllByOwnerId(int i) {
+		return orderDao. GetAllByOwnerId( i);
 	}
 
 	@Override
@@ -33,6 +33,18 @@ public class OrderServiceImpl implements iOrderService {
 	@Override
 	public List<Order> GetByDate(Date date) {
 		return orderDao.GetByDate(date);
+	}
+
+	@Override
+	public Order GetOneJoinUser(int id) {
+		
+		return orderDao.GetOneJoinUser(id);
+	}
+
+	@Override
+	public List<Order> GetByStatus(String status) {
+		
+		return orderDao.GetByStatus(status);
 	}
 
 }

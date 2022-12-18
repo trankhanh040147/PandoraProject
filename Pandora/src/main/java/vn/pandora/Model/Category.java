@@ -19,6 +19,12 @@ public class Category {
 		this.updatedAt = updatedAt;
 	}
 
+	public Category(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	private int id;
 	private String name;
 	private int categoryId;
@@ -88,7 +94,5 @@ public class Category {
 		return "Category [id=" + id + ", name=" + name + ", categoryId=" + categoryId + ", image=" + image
 				+ ", isDeleted=" + isDeleted + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
-	
-	
 
 }

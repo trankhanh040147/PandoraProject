@@ -28,13 +28,13 @@
                
                     <div class="col-lg-4 col-md-5	">
 								<div class="card card-user">
-									<div class="image">
-										<label> <input type="file" accept="image/*"
+									<div class="image" " >
+										<label style="height:100%; width:100%"> <input type="file" accept="image/*"
 											name="cover"
 											onchange="document.querySelector('.coverimg').src = window.URL.createObjectURL(this.files[0]);"
 											style="display: none; cursor: pointer;"> <a> <c:url
 													value="/image?fname=${storeDetail.cover}" var="imgUrl"></c:url>
-												<img class="coverimg" src="${imgUrl}" alt="Ảnh bìa"
+												<img  class="coverimg" src="${imgUrl}" alt="Ảnh bìa"
 												style="align-items: center;">
 										</a>
 										</label>
@@ -43,28 +43,44 @@
 
 
 									<div class="content">
-                                <div class="author">
-                                <label> <input type="file" accept="image/*"
-											name="avatar"
-											onchange="document.querySelector('.avatarimg').src = window.URL.createObjectURL(this.files[0]);"
+										<div class="author">
+											<label> <input type="file" accept="image/*"
+												name="avatar"
+												onchange="document.querySelector('.avatarimg').src = window.URL.createObjectURL(this.files[0]);"
+												style="display: none; cursor: pointer;"> <a> <c:url
+														value="/image?fname=${storeDetail.avatar}" var="imgUrl1"></c:url>
+													<img  class=" avatarimg avatar border-white"
+													alt="Ảnh đại diện" src="${imgUrl1}" />
+											</a>
+											<input name="name" value="${storeDetail.name}"
+											style="border: none; outline: none;margin-bottom: 70px; margin-left: 80px; font-size: 20px" />
+											</label>
+                                                       
+											
+										</div>
+										
+										
+											<div class="image" style="height:200px">
+										<label> <input type="file" accept="image/*"
+											name="featured_image"
+												onchange="document.querySelector('.featured_image').src = window.URL.createObjectURL(this.files[0]);"
 											style="display: none; cursor: pointer;"> <a> <c:url
-													value="/image?fname=${storeDetail.avatar}" var="imgUrl1"></c:url>
-												<img class=" avatarimg avatar border-white" alt="Ảnh đại diện" src="${imgUrl1}"/>
+													value="/image?fname=${storeDetail.featured_image}"
+													var="imgUrl2"></c:url> <img class="featured_image"
+												src="${imgUrl2}" alt="Ảnh đặc trưng" style="align-items: center;">
 										</a>
 										</label>
-                                  
-                                </div>
-                                <input  name ="name" value="${storeDetail.name}" style="border:none; outline:none; margin-left:100px ; font-size: 20px"/> 
-                            </div>
-                            <hr>
-                            <div class="text-center">
-                                <div class="row">
+									</div>
+									
+									</div>
+
+									
+									<div class="text-center">
+                                <div class="row justify-content-around">
                                     <div class="col-md-4 col-md-offset-1">
                                         <h5 >${storeDetail.rating}<br /><small>Đánh giá</small></h5>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h5>2GB<br /><small>Doanh thu</small></h5>
-                                    </div>
+                                    </div>                                
+                                       <span>   </span>                                
                                      <div class="col-md-4">
                                         <h5>${storeDetail.e_wallet }<br /><small>Ví điện tử </small></h5>
                                     </div>
@@ -84,25 +100,33 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Mã cửa hàng</label>
-                                                <span type="text" class="form-control border-input" name="storeId" >${storeDetail.id}</span>
+                                                 <input class="form-control border-input" readonly="readonly" name="storeId" value="${storeDetail.id}"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Mã chủ cửa hàng</label>
-                                                <span type="text" class="form-control border-input" name="ownerId" >${storeDetail.ownerId}</span>
+                                                <input  class="form-control border-input" readonly name="ownerId" value="${storeDetail.ownerId}"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="bio">Mô tả cửa hàng</label>
-                                                <input type="email" name="bio" class="form-control border-input" value="${storeDetail.bio}">
+                                                <input type="text" name="bio" class="form-control border-input" value="${storeDetail.bio}">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Trạng thái</label>
-                                                <input type="text" class="form-control border-input" name="isOpen" value="${storeDetail.isOpen()}">
+                                                <label>Có đang hoạt động hay không:</label>                                              
+				                          <select name="isOpen">
+				                          <option value="true" <c:if test="${storeDetail.isOpen()}">selected</c:if> >
+				                          	Đang hoạt động	
+				                          </option>	
+				                          			             
+				                           <option value="false" <c:if test="${!storeDetail.isOpen()}">selected</c:if> > 
+				                         Không hoạt động	
+				                          </option>				                          			                         
+				                          </select>
                                             </div>
                                         </div>
                  
@@ -124,8 +148,3 @@
 		</div>
 	</div>
 
-
-
-
-
- 

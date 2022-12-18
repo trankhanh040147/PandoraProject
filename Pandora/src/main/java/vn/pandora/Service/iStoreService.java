@@ -7,7 +7,7 @@ import vn.pandora.Model.Store;
 public interface iStoreService {
 	void Add(Store store);
 
-	void Update(Store store);
+	void Update(String name, String boi, boolean isOpen, String avatar, String cover, String featured_image, int id);
 
 	Store GetOne(int id);
 

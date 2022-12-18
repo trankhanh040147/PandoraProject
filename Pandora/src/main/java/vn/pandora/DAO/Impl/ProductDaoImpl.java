@@ -94,9 +94,10 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 			while (rs.next()) {
 				Product product = new Product(id, rs.getString("name"), rs.getString("description"), rs.getInt("price"),
 						rs.getInt("promotionalPrice"), rs.getInt("quantity"), rs.getInt("sold"),
-						rs.getBoolean("isActive"), rs.getBoolean("isSelling"), UtilClass.toList_Str(rs.getString("listImages")),
-						rs.getInt("categoryId"), UtilClass.toList_Int(rs.getString("styleValueIds")), rs.getInt("storeId"),
-						rs.getInt("rating"), rs.getDate("createdAt"), rs.getDate("updatedAt"));
+						rs.getBoolean("isActive"), rs.getBoolean("isSelling"),
+						UtilClass.toList_Str(rs.getString("listImages")), rs.getInt("categoryId"),
+						UtilClass.toList_Int(rs.getString("styleValueIds")), rs.getInt("storeId"), rs.getInt("rating"),
+						rs.getDate("createdAt"), rs.getDate("updatedAt"));
 				return product;
 			}
 		} catch (Exception e) {
@@ -130,7 +131,7 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public List<Product> findTop_Promo(int index, int pagesize) {
 		String sql = "select * from Product ORDER BY (price-promotionalPrice) desc  OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
@@ -156,7 +157,7 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public List<Product> findTop_Created(int index, int pagesize) {
 		String sql = "select * from Product ORDER BY createdAt desc  OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
@@ -182,8 +183,35 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 		}
 		return null;
 	}
-	
-	
 
-	
+	// Hàm cấp phép cho sản phẩm trong hệ thống
+	// Note: Nếu sản phẩm đang được cấp phép rồi thì không cấp phép nữa
+	@Override
+	public void permit(Product product) {
+		String sql = "Update Product set [isActive] = 1 where _id = ? and [isActive] = 0";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, product.getId());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Hàm cấm sản phẩm trong hệ thống
+	// Note: Nếu sản phẩm đang bị cấm thì không cấm nữa
+	@Override
+	public void revoke(Product product) {
+		String sql = "Update Product set [isActive] = 0 where _id = ? and [isActive] = 1";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, product.getId());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

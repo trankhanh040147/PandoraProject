@@ -17,6 +17,11 @@ public class StyleValue {
 		this.updatedAt = updatedAt;
 	}
 
+	public StyleValue(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -71,11 +76,11 @@ public class StyleValue {
 	private boolean isDeleted;
 	private Date createdAt;
 	private Date updatedAt;
+
 	@Override
 	public String toString() {
 		return "StyleValue [id=" + id + ", name=" + name + ", styleId=" + styleId + ", isDeleted=" + isDeleted
 				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
-	
-	
+
 }

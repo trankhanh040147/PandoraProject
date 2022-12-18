@@ -34,8 +34,13 @@
 									type="text" class="form-control">
 							</div>
 							<div class="position-relative form-group">
-								<label for="listImage" class="">Ảnh mẫu</label><input
-									name="listImage" id="listImage" type="file" class="form-control-file">
+								<label for="featured_image" class="">Ảnh đặc trưng</label><input
+									name="featured_image" id="featured_image" type="file"
+									class="form-control-file" name="featured_image"
+									onchange="document.querySelector('.featured_image').src = window.URL.createObjectURL(this.files[0]);"
+									accept="image/*" style="cursor: pointer;" /> 
+									<img  class="featured_image" width="150" height="150"
+									alt="Ảnh đặc trưng" style="align-items: center;" src="">
 							</div>
 							<div class="position-relative form-group">
 								<label for="descripsion" class="">Mô tả </label><input
@@ -50,21 +55,17 @@
 							<div class="position-relative form-group">
 								<label for="category" class="">Phân loại </label>
 								<select id="cars" name="category">
-									<option value="Quần" selected>Quần </option>
-									<option value="Áo"> Áo</option>
-									<option value="Giày">Giày </option>
-									<option value="Cặp">Cặp</option>
-									<option value="Điện thoại" >Điện thoại</option>
+									<c:forEach items="${listCategory}" var ="x">
+								  <option>${x.name}</option>
+								</c:forEach>
 								</select>
 							</div>
                             <div class="position-relative form-group">
 								<label for="Style-color" class="">Màu </label>
 								<select id="cars" name="Style-color">
-									<option value="Black" selected>Black </option>
-									<option value="White"> White</option>
-									<option value="Red">Red </option>
-									<option value="Blue">Blue</option>
-									<option value="Green" >Green</option>
+								<c:forEach items="${listStyle}" var ="y">
+								  <option>${y.name}</option>
+								</c:forEach>
 								</select>
 							</div>
 							 <div class="position-relative form-group">

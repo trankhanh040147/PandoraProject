@@ -23,6 +23,7 @@
 
 		<div class="row">
 			<!-- Body file -->
+			<div class="col-lg-12">
 			<div class="mb-3 card">
 				<div class="card-header card-header-tab-animation">
 					<ul class="nav nav-justified">
@@ -44,24 +45,14 @@
 				<div class="card-body">
 					<div class="tab-content">
 						<div class="tab-pane active" id="tab-eg115-0" role="tabpanel">
-							<div class="app-header-left">
-								<div class="search-wrapper">
-									<div class="input-holder">
-										<input type="text" name="search" class="search-input"
-											placeholder="Nhập mã của đơn hàng">
-										<button class="search-icon">
-											<span></span>
-										</button>
-									</div>
-									<button class="close"></button>
-								</div>
-							</div>
+						
+								
 							<div class="col-lg-12">
 								<div class="main-card mb-3 card">
 									<div class="card-body">
 										<h5 class="card-title" style="margin-left: 350px;">Danh
 											sách đơn hàng</h5>
-										<table class="mb-0 table table-hover" style="width:1060px">
+										<table class="mb-0 table table-hover">
 											<thead>
 												<tr>
 													<th>STT</th>
@@ -71,54 +62,45 @@
 													<th>Số điện thoại</th>
 													<th>Thành tiền</th>
 													<th>Mã vẫn chuyển</th>
-													<th style="width:200px; text-align: center; ">Địa chỉ</th>
+													<th style="width: 200px; text-align: center;">Địa chỉ</th>
 													<th>Trạng thái</th>
 													<th></th>
 												</tr>
 											</thead>
-											<tbody>
-												<tr>
-													<th scope="row">1</th>
 
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td ></td>
-													<td></td>
-													<td><a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-eye"></a> <a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-upload"></a></td>
-												</tr>
-											</tbody>
+											<c:forEach items="${listOrders}" var="x" varStatus="loop">
+												<tbody>
+													<tr>
+													<td style="color:blue;">${loop.count}</td>
+
+														<td>${x.id}</td>
+														<td>${x.storeId}</td>
+														<td>${x.userId }</td>
+														<td>${x.phone }</td>
+														<td>${x.amountFromUser }</td>
+														<td>${x.deliveryId}</td>
+														<td>${x.address }</td>
+														<td>${x.status }</td>
+														<td><a
+															href="${pageContext.request.contextPath}/vendor/OrderDetail?oid=${x.id}"
+															class=" fa fa-eye"></a> </td>
+													</tr>
+												</tbody>
+											</c:forEach>
+
 										</table>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="tab-pane" id="tab-eg115-1" role="tabpanel">
-							<div class="app-header-left">
-								<div class="search-wrapper">
-									<div class="input-holder">
-										<input type="text" name="search" class="search-input"
-											placeholder="Nhập mã của đơn hàng">
-										<button class="search-icon">
-											<span></span>
-										</button>
-									</div>
-									<button class="close"></button>
-								</div>
-							</div>
+							
 							<div class="col-lg-12">
 								<div class="main-card mb-3 card">
 									<div class="card-body">
 										<h5 class="card-title" style="margin-left: 350px;">Đơn
 											hàng chờ xác nhận</h5>
-										<table class="mb-0 table table-hover" style="width:1060px">
+										<table class="mb-0 table table-hover" >
 											<thead>
 												<tr>
 													<th>STT</th>
@@ -128,54 +110,45 @@
 													<th>Số điện thoại</th>
 													<th>Thành tiền</th>
 													<th>Mã vẫn chuyển</th>
-													<th style="width:200px; text-align: center; ">Địa chỉ</th>
+													<th style="width: 200px; text-align: center;">Địa chỉ</th>
 													<th>Trạng thái</th>
 													<th></th>
 												</tr>
 											</thead>
+											<c:forEach items="${listOrdersNotProcessed}" var="y" varStatus="loop">
 											<tbody>
 												<tr>
-													<th scope="row">1</th>
+													<td style="color:blue;">${loop.count}</td>
 
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
+												         <td>${y.id}</td>
+														<td>${y.storeId }</td>
+														<td>${y.userId }</td>
+														<td>${y.phone }</td>
+														<td>${y.amountFromUser }</td>
+														<td>${y.deliveryId}</td>
+														<td>${y.address }</td>
+														<td>Chờ xác nhận</td>
 													<td><a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-eye"></a> <a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-upload"></a></td>
+														href="${pageContext.request.contextPath}/vendor/updatenotprocessed?id=${y.id}"
+														class=" fa fa-upload"></a> <a style="margin-left:5px;"
+														href="${pageContext.request.contextPath}/vendor/updatecancelled?id=${y.id}"
+														class=" fa fa-window-close"></a></td>
 												</tr>
 											</tbody>
+											</c:forEach>
 										</table>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="tab-pane" id="tab-eg115-2" role="tabpanel">
-							<div class="app-header-left">
-								<div class="search-wrapper">
-									<div class="input-holder">
-										<input type="text" name="search" class="search-input"
-											placeholder="Nhập mã của đơn hàng">
-										<button class="search-icon">
-											<span></span>
-										</button>
-									</div>
-									<button class="close"></button>
-								</div>
-							</div>
+							
 							<div class="col-lg-12">
 								<div class="main-card mb-3 card">
 									<div class="card-body">
 										<h5 class="card-title" style="margin-left: 350px;">Đơn
 											hàng chờ lấy hàng</h5>
-								<table class="mb-0 table table-hover" style="width:1060px">
+										<table class="mb-0 table table-hover" >
 											<thead>
 												<tr>
 													<th>STT</th>
@@ -185,54 +158,45 @@
 													<th>Số điện thoại</th>
 													<th>Thành tiền</th>
 													<th>Mã vẫn chuyển</th>
-													<th style="width:200px; text-align: center; ">Địa chỉ</th>
+													<th style="width: 200px; text-align: center;">Địa chỉ</th>
 													<th>Trạng thái</th>
 													<th></th>
 												</tr>
 											</thead>
+											<c:forEach items="${listOrdersProcessing}" var="z" varStatus="loop">
 											<tbody>
 												<tr>
-													<th scope="row">1</th>
+													<td style="color:blue;">${loop.count}</td>
 
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
+													   <td>${z.id}</td>
+														<td>${z.storeId }</td>
+														<td>${z.userId }</td>
+														<td>${z.phone }</td>
+														<td>${z.amountFromUser }</td>
+														<td>${z.deliveryId}</td>
+														<td>${z.address }</td>
+														<td>Chờ lấy hàng</td>
 													<td><a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-eye"></a> <a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-upload"></a></td>
+														href="${pageContext.request.contextPath}/vendor/updateprocessing?id=${z.id}"
+														class=" fa fa-upload"></a> <a style="margin-left:5px;"
+														href="${pageContext.request.contextPath}/vendor/updatecancelled?id=${z.id}"
+														class=" fa fa-window-close"></a></td>
 												</tr>
 											</tbody>
+											</c:forEach>
 										</table>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="tab-pane" id="tab-eg115-3" role="tabpanel">
-							<div class="app-header-left">
-								<div class="search-wrapper">
-									<div class="input-holder">
-										<input type="text" name="search" class="search-input"
-											placeholder="Nhập mã của đơn hàng">
-										<button class="search-icon">
-											<span></span>
-										</button>
-									</div>
-									<button class="close"></button>
-								</div>
-							</div>
+							
 							<div class="col-lg-12">
 								<div class="main-card mb-3 card">
 									<div class="card-body">
 										<h5 class="card-title" style="margin-left: 350px;">Đơn
 											hàng đang giao</h5>
-										<table class="mb-0 table table-hover" style="width:1060px">
+										<table class="mb-0 table table-hover" >
 											<thead>
 												<tr>
 													<th>STT</th>
@@ -242,30 +206,32 @@
 													<th>Số điện thoại</th>
 													<th>Thành tiền</th>
 													<th>Mã vẫn chuyển</th>
-													<th style="width:200px; text-align: center; ">Địa chỉ</th>
+													<th style="width: 200px; text-align: center;">Địa chỉ</th>
 													<th>Trạng thái</th>
 													<th></th>
 												</tr>
 											</thead>
+											<c:forEach items="${listOrdersShipped}" var="a" varStatus="loop">
 											<tbody>
 												<tr>
-													<th scope="row">1</th>
+													<td style="color:blue;">${loop.count}</td>
 
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
+													    <td>${a.id}</td>
+														<td>${a.storeId }</td>
+														<td>${a.userId }</td>
+														<td>${a.phone }</td>
+														<td>${a.amountFromUser }</td>
+														<td>${a.deliveryId}</td>
+														<td>${a.address }</td>
+														<td>Đang giao</td>
 													<td><a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-eye"></a> <a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-upload"></a></td>
+														href="${pageContext.request.contextPath}/vendor/updateshipped?id=${a.id}"
+														class=" fa fa-upload"></a> <a style="margin-left:5px;"
+														href="${pageContext.request.contextPath}/vendor/updatecancelled?id=${a.id}"
+														class=" fa fa-window-close "></a></td>
 												</tr>
 											</tbody>
+											</c:forEach>
 										</table>
 									</div>
 								</div>
@@ -289,7 +255,7 @@
 									<div class="card-body">
 										<h5 class="card-title" style="margin-left: 350px;">Đơn
 											hàng đã giao</h5>
-										<table class="mb-0 table table-hover" style="width:1060px">
+										<table class="mb-0 table table-hover" >
 											<thead>
 												<tr>
 													<th>STT</th>
@@ -299,54 +265,41 @@
 													<th>Số điện thoại</th>
 													<th>Thành tiền</th>
 													<th>Mã vẫn chuyển</th>
-													<th style="width:200px; text-align: center; ">Địa chỉ</th>
+													<th style="width: 200px; text-align: center;">Địa chỉ</th>
 													<th>Trạng thái</th>
-													<th></th>
+													
 												</tr>
 											</thead>
+											<c:forEach items="${listOrdersDelivered}" var="b" varStatus="loop">
 											<tbody>
 												<tr>
-													<th scope="row">1</th>
+													<td style="color:blue;">${loop.count}</td>
 
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td><a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-eye"></a> <a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-upload"></a></td>
+													   <td>${b.id}</td>
+														<td>${b.storeId }</td>
+														<td>${b.userId }</td>
+														<td>${b.phone }</td>
+														<td>${b.amountFromUser }</td>
+														<td>${b.deliveryId}</td>
+														<td>${b.address }</td>
+														<td>Đã giao</td>
+													
 												</tr>
 											</tbody>
+											</c:forEach>
 										</table>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="tab-pane" id="tab-eg115-5" role="tabpanel">
-							<div class="app-header-left">
-								<div class="search-wrapper">
-									<div class="input-holder">
-										<input type="text" name="search" class="search-input"
-											placeholder="Nhập mã của đơn hàng">
-										<button class="search-icon">
-											<span></span>
-										</button>
-									</div>
-									<button class="close"></button>
-								</div>
-							</div>
+							
 							<div class="col-lg-12">
 								<div class="main-card mb-3 card">
 									<div class="card-body">
 										<h5 class="card-title" style="margin-left: 350px;">Đơn
 											hàng đã hủy</h5>
-										<table class="mb-0 table table-hover" style="width:1060px">
+										<table class="mb-0 table table-hover" >
 											<thead>
 												<tr>
 													<th>STT</th>
@@ -356,30 +309,28 @@
 													<th>Số điện thoại</th>
 													<th>Thành tiền</th>
 													<th>Mã vẫn chuyển</th>
-													<th style="width:200px; text-align: center; ">Địa chỉ</th>
+													<th style="width: 200px; text-align: center;">Địa chỉ</th>
 													<th>Trạng thái</th>
-													<th></th>
+												
 												</tr>
 											</thead>
+											<c:forEach items="${listOrdersCancelled}" var="c" varStatus="loop">
 											<tbody>
 												<tr>
-													<th scope="row">1</th>
+													<td style="color:blue;">${loop.count}</td>
 
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td><a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-eye"></a> <a
-														href="${pageContext.request.contextPath}/vendor/informationStore?sid=1"
-														class=" fa fa-upload"></a></td>
+													    <td>${c.id}</td>
+														<td>${c.storeId }</td>
+														<td>${c.userId }</td>
+														<td>${c.phone }</td>
+														<td>${c.amountFromUser }</td>
+														<td>${c.deliveryId}</td>
+														<td>${c.address }</td>
+														<td>Đã hủy</td>
+													
 												</tr>
 											</tbody>
+											</c:forEach>
 										</table>
 									</div>
 								</div>
@@ -388,6 +339,7 @@
 
 					</div>
 				</div>
+			</div>
 			</div>
 
 

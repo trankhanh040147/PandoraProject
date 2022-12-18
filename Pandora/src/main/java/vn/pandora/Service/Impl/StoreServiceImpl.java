@@ -15,10 +15,10 @@ public class StoreServiceImpl implements iStoreService {
 	}
 
 	@Override
-	public void Update(Store store) {
-		storeDao.Update(store);
-		
+	public void Update(String name, String boi, boolean isOpen,String avatar, String cover, String featured_image,int id) {
+		storeDao.Update(name, boi, isOpen, avatar, cover, featured_image, id);
 	}
+
 
 	@Override
 	public Store GetOne(int id) {

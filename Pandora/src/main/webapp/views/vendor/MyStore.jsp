@@ -35,8 +35,8 @@
 		<div class="row">
 			<!-- Body file -->
 
-			<div class="col-lg-6">
-				<div class="main-card mb-3 card" style="width: 1000px;margin-left:70px ">
+			<div class="col-lg-12">
+				<div class="main-card mb-3 card">
 					<div class="card-body">
 						<h5 class="card-title" ">Danh sách cửa hàng của bạn</h5>
 						<table class="mb-0 table table-hover">
@@ -50,11 +50,11 @@
 									<th></th>
 								</tr>
 							</thead>
-							<c:forEach items="${listStore}" var ="x">
+							<c:forEach items="${listStore}" var ="x" varStatus="loop">
 							
 							<tbody>
 								<tr>
-									<th scope="row">1</th>
+									<td style="color:blue;">${loop.count }</td>
 									<td>${x.getName()}</td>
 									<td>${x.getId()}</td>
 									<td>${x.isOpen() }</td>
