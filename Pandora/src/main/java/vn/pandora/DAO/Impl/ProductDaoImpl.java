@@ -15,7 +15,7 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 
 	@Override
 	public void Add(Product product) {
-		String sql = "INSERT INTO [Product](name,description,price, promotionalPrice,quantity,listImages,categoryId,styleValueIds,storeId) VALUES(?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO [Product](name,description,price, promotionalPrice,quantity,listImages,categoryId,styleValueIds,storeId ,isActive,isSelling) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -29,6 +29,8 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 			ps.setInt(7, product.getCategoryId());
 			ps.setString(8, UtilClass.toStr_IntList(product.getStyleValueIds()));
 			ps.setInt(9, product.getStoreId());
+			ps.setBoolean(10,false);
+			ps.setBoolean(11,false);
 			ps.execute();
 
 		} catch (Exception e) {
@@ -38,7 +40,7 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 
 	@Override
 	public void Update(Product product) {
-		String sql = "UPDATE Product set name=? , description=? , price=?, promotionalPrice=? , quantity=? , sold =? , isActive=? , isSelling=?  , listImages=? , categoryId=? , styleValueIds=?,storeId=?, rating=? where id=? ";
+		String sql = "UPDATE Product set name=? , description=? , price=?, promotionalPrice=? , quantity=?   , isSelling=?  , listImages=? , categoryId=? , styleValueIds=?,storeId=? where _id=? ";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -48,15 +50,15 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 			ps.setDouble(3, product.getPrice());
 			ps.setDouble(4, product.getPromotionalPrice());
 			ps.setInt(5, product.getQuantity());
-			ps.setInt(6, product.getSold());
-			ps.setBoolean(7, product.isActive());
-			ps.setBoolean(8, product.isSelling());
-			ps.setString(9, UtilClass.toStr_StrList(product.getListImages()));
-			ps.setInt(10, product.getCategoryId());
-			ps.setString(11, UtilClass.toStr_IntList(product.getStyleValueIds()));
-			ps.setInt(12, product.getStoreId());
-			ps.setInt(13, product.getRating());
-			ps.setInt(14, product.getId());
+			
+			
+			ps.setBoolean(6, product.isSelling());
+			ps.setString(7, UtilClass.toStr_StrList(product.getListImages()));
+			ps.setInt(8, product.getCategoryId());
+			ps.setString(9, UtilClass.toStr_IntList(product.getStyleValueIds()));
+			ps.setInt(10, product.getStoreId());
+			
+			ps.setInt(11, product.getId());
 			ps.execute();
 
 		} catch (Exception e) {
@@ -208,6 +210,33 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<Product> GetAllByOwnerId(int index, int pagesize, int id) {
+		String sql = "select * from Product join Store on [Product].storeId=store._id where Store.ownerId=? and Product.isActive='True' ORDER BY Product._id asc  OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+		try {
+			List<Product> list = new ArrayList<Product>();
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setInt(2, index);
+			ps.setInt(3, pagesize);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Product product = new Product(rs.getInt("_id"), rs.getString("name"), rs.getString("description"),
+						rs.getInt("price"), rs.getInt("promotionalPrice"), rs.getInt("quantity"), rs.getInt("sold"),
+						rs.getBoolean("isActive"), rs.getBoolean("isSelling"),
+						UtilClass.toList_Str(rs.getString("listImages")), rs.getInt("categoryId"),
+						UtilClass.toList_Int(rs.getString("styleValueIds")), rs.getInt("storeId"), rs.getInt("rating"),
+						rs.getDate("createdAt"), rs.getDate("updatedAt"));
+				list.add(product);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

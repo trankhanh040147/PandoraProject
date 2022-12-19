@@ -35,24 +35,24 @@ public class OrderController extends HttpServlet {
 		req.setAttribute("listOrders", listOrders);
 		
 		List<Order> listOrdersNotProcessed= new ArrayList<Order>();
-		listOrdersNotProcessed= orderService.GetByStatus("not processed");
+		listOrdersNotProcessed= orderService.GetByStatus("not processed",users.getId());
 		req.setAttribute("listOrdersNotProcessed", listOrdersNotProcessed);
   
 		List<Order> listOrdersProcessing= new ArrayList<Order>();
-		listOrdersProcessing= orderService.GetByStatus("processing");
+		listOrdersProcessing= orderService.GetByStatus("processing",users.getId());
 		req.setAttribute("listOrdersProcessing", listOrdersProcessing);
 		
 		List<Order> listOrdersShipped= new ArrayList<Order>();
-		listOrdersShipped= orderService.GetByStatus("shipped");
+		listOrdersShipped= orderService.GetByStatus("shipped",users.getId());
 		req.setAttribute("listOrdersShipped", listOrdersShipped);
 		
 		List<Order> listOrdersDelivered= new ArrayList<Order>();
-		listOrdersDelivered= orderService.GetByStatus("delivered");
+		listOrdersDelivered= orderService.GetByStatus("delivered",users.getId());
 		req.setAttribute("listOrdersDelivered", listOrdersDelivered);
 		
 		
 		List<Order> listOrdersCancelled= new ArrayList<Order>();
-		listOrdersCancelled= orderService.GetByStatus("cancelled");
+		listOrdersCancelled= orderService.GetByStatus("cancelled",users.getId());
 		req.setAttribute("listOrdersCancelled", listOrdersCancelled);
 		
 		

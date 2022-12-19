@@ -32,6 +32,55 @@
 	    -->
 
 <link href="${pageContext.request.contextPath}/assets/css/main.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/infStore.css" rel="stylesheet">
+
+	<!--  Script  -->
+	
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+	
+	<!--  Script  -->
+
+<!--=========================================================================================================================-->
+	<!-- CSS và JS cho Notify alert -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	
+	<link href="${pageContext.request.contextPath}/assets-web/css/themify-icons.css" rel="stylesheet">
+	<link rel="stylesheet"
+		href="${pageContext.request.contextPath}/assets-web/css/alert.css">
+	<link rel="stylesheet"
+		href="${pageContext.request.contextPath}/assets-web/css/animate.min.css">
+	
+	<script src="${pageContext.request.contextPath}/assets-web/js/demo.js"
+		type="text/javascript">></script>
+	<script
+		src="${pageContext.request.contextPath}/assets-web/js/bootstrap-notify.js"></script>
+	<!-- CSS và JS cho Notify alert -->
+	
+	<!--  Hiển thị alert -->
+	<c:if test="${requestScope.alert!=null}">
+		<script type="text/javascript">
+				window.onload = function() {
+					demo.showNtf(${requestScope.alertType}, "${requestScope.alert}", "${requestScope.alertIcon}");
+				};
+			</script>
+	</c:if> 
+	<!--  Hiển thị alert -->
+	
+	
+	<!--  Hiển thị alert trên session-->
+	<c:if test='${sessionScope.alert != null}'>
+		<script type="text/javascript">
+				window.onload = function() {
+					demo.showNtf(${sessionScope.alertType}, "${sessionScope.alert}", "${sessionScope.alertIcon}");
+				};
+		</script>
+		<c:remove var="alertType" scope="session" />
+		<c:remove var="alert" scope="session" />
+		<c:remove var="alertIcon" scope="session" />
+		
+	</c:if>  
+	<!--  Hiển thị alert trên session-->
+	<!--=========================================================================================================================-->
 
 </head>
 
@@ -60,11 +109,5 @@
 	<!--=== End Footer v4 ===-->
 
 </body>
-
-<!--  Script  -->
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-
-<!--  Script  -->
 
 </html>

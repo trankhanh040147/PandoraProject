@@ -46,6 +46,24 @@ public class ProductServiceImpl implements iProductService {
 	public List<Product> findTop_Created(int index, int pagesize) {
 		return productDao.findTop_Created(index, pagesize);
 	}
+
+	@Override
+	public void permit(Product product) {
+	productDao.permit(product);
+		
+	}
+
+	@Override
+	public void revoke(Product product) {
+		productDao.revoke(product);
+		
+	}
+
+	@Override
+	public List<Product> GetAllByOwnerId(int index, int pagesize, int id) {
+		
+		return productDao.GetAllByOwnerId(index, pagesize, id);
+	}
 	
 
 }

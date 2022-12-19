@@ -153,45 +153,44 @@
 				<div class="scrollbar-sidebar">
 					<div class="app-sidebar__inner">
 						<ul class="vertical-nav-menu">
+						
+							<li class="app-sidebar__heading">Quản lý tài khoản</li>
+								<li><a href="${pageContext.request.contextPath}/admin/ManagerUser"> <i
+										class="metismenu-icon fa fa-list-alt"></i>Danh sách tài khoản
+								</a></li>
+						
 							<li class="app-sidebar__heading">Quản lý cửa hàng</li>
-							<li><a href="${pageContext.request.contextPath}/vendor/createStore"> <i
-									class="metismenu-icon fa fa-plus-circle"></i> Tạo cửa hàng
-							</a></li>
-							<li><a href="${pageContext.request.contextPath}/vendor/listStore"> <i
-									class="metismenu-icon fa fa-list-alt"></i>Danh sách cửa hàng sở hữu
-							</a></li>
-							
-							
+								<li><a href="${pageContext.request.contextPath}/admin/store"> <i
+										class="metismenu-icon fa fa-list-alt"></i> Danh sách cửa hàng 
+								</a></li>
+								
 							
 							<li class="app-sidebar__heading">Quản lý đơn hàng</li>
-							<li><a href="${pageContext.request.contextPath}/vendor/listOrder"> <i
-									class="metismenu-icon fa fa-list-alt"></i>Danh sách đơn hàng
-							</a></li>
+								<li><a href="${pageContext.request.contextPath}/admin/order"> <i
+										class="metismenu-icon fa fa-list-alt"></i>Danh sách đơn hàng
+								</a></li>
+								
 							
 							<li class="app-sidebar__heading">Quản lý sản phẩm </li>
-							<li><a href="${pageContext.request.contextPath}/vendor/ListProduct"> <i
-									class="metismenu-icon fa fa-list-alt"> </i>Danh sách sản phẩm
-							</a></li>
-							<li><a href="${pageContext.request.contextPath}/vendor/addProduct"> <i
-									class="metismenu-icon pe-7s-plus"> </i>Thêm sản phẩm
-							</a></li>
+								<li><a href="${pageContext.request.contextPath}/admin/product"> <i
+										class="metismenu-icon fa fa-list-alt"> </i>Danh sách sản phẩm
+								</a></li>
+							
 							<li class="app-sidebar__heading">Quản lý ví điện tử </li>
-							<li><a href="${pageContext.request.contextPath}/vendor/Transaction"> <i
-									class="metismenu-icon fa fa-history"> </i>Lịch sử giao dịch 
-							</a></li>
-							<li><a href="${pageContext.request.contextPath}/vendor/Withdraw"> <i
-									class="metismenu-icon pe-7s-cash"> </i>Rút tiền
-							</a></li>
+								<li><a href="${pageContext.request.contextPath}/admin/transaction"> <i
+										class="metismenu-icon fa fa-history"> </i>Lịch sử giao dịch 
+								</a></li>
+						
 							<li class="app-sidebar__heading">Thống kê doanh thu</li>
-							<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByProduct"> <i
-									class="metismenu-icon fa fa-database"> </i>Thống kê theo sản phẩm
-							</a></li>
-							<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByOrder"> <i
-									class="metismenu-icon fa fa-database"> </i>Thống kê theo đơn hàng 
-							</a></li>
-							<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByDate"> <i
-									class="metismenu-icon fa fa-database"> </i>Thống kê theo thời gian
-							</a></li>
+								<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByProduct"> <i
+										class="metismenu-icon fa fa-database"> </i>Thống kê theo sản phẩm
+								</a></li>
+								<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByOrder"> <i
+										class="metismenu-icon fa fa-database"> </i>Thống kê theo đơn hàng 
+								</a></li>
+								<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByDate"> <i
+										class="metismenu-icon fa fa-database"> </i>Thống kê theo thời gian
+								</a></li>
 							
 						</ul>
 					</div>

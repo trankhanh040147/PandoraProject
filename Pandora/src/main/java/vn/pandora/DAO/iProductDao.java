@@ -22,5 +22,5 @@ public interface iProductDao {
 	void permit(Product product);
 
 	void revoke(Product product);
-
+	List<Product> GetAllByOwnerId(int index, int pagesize , int id);
 }

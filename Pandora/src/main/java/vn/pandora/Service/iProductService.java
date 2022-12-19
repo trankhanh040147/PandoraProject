@@ -18,4 +18,8 @@ public interface iProductService {
 	List<Product> findTop_Promo(int index, int pagesize);
 
 	List<Product> findTop_Created(int index, int pagesize);
+	void permit(Product product);
+
+	void revoke(Product product);
+	List<Product> GetAllByOwnerId(int index, int pagesize, int id);
 }

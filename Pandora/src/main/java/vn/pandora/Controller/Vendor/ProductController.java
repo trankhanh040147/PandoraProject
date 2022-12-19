@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import vn.pandora.Model.Product;
+import vn.pandora.Model.User;
 import vn.pandora.Service.Impl.CategoryServiceImpl;
 import vn.pandora.Service.Impl.ProductServiceImpl;
 import vn.pandora.Service.Impl.StyleValueServiceImpl;
@@ -56,14 +58,17 @@ public class ProductController extends HttpServlet {
 		
 		/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 		//Lấy dữ liệu theo số trang
-		List<Product> productList = procductService.GetAll((index-1)*ItemsPerPage, ItemsPerPage);
+		 HttpSession session = req.getSession();
+			User users = (User) session.getAttribute("account");
+		List<Product> productList = procductService.GetAllByOwnerId((index-1)*ItemsPerPage, ItemsPerPage, users.getId());
+		
 		/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 		
 		/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 		//Đếm tổng số items
 		
 		//Cách 2: Lấy danh sách tất cả items và đếm số items
-		List<Product> productListAll = procductService.GetAll(0,200);
+		List<Product> productListAll = procductService.GetAllByOwnerId(0,200,users.getId());
 		int totalItems = productListAll.size();
 		/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 		

@@ -19,7 +19,7 @@
 				</div>
 			</div>
 		</div>
-		<form enctype="multipart/form-data" action="<c:url value="/vendor/listStore"/>" method="post">
+		<form enctype="multipart/form-data" action="<c:url value="/admin/store"/>" method="post">
 		<div class="app-header-left">
 			<div class="search-wrapper">
 				<div class="input-holder">
@@ -39,6 +39,7 @@
 				<div class="main-card mb-3 card">
 					<div class="card-body">
 						<h5 class="card-title" ">Danh sách cửa hàng của bạn</h5>
+						
 						<table class="mb-0 table table-hover">
 							<thead>
 								<tr>
@@ -46,8 +47,10 @@
 									<th>Tên cửa hàng</th>
 									<th>Id cửa hàng</th>
 									<th>Trạng thái</th>
-									<th style="width: 40% ;text-align: center; ">Mô tả</th>
-									<th></th>
+									<th>Quyền hoạt động</th>
+									<th>Đánh giá</th>
+									<th style="width: 30% ;text-align: center; ">Mô tả</th>
+									<th>Cấp quyền hoặc cấm</th>
 								</tr>
 							</thead>
 							<c:forEach items="${listStore}" var ="x" varStatus="loop">
@@ -57,14 +60,27 @@
 									<td style="color:blue;">${loop.count }</td>
 									<td>${x.getName()}</td>
 									<td>${x.getId()}</td>
-									<td> 
-									<c:if test="${x.isOpen()}">✔</c:if>
-									<c:if test="${!x.isOpen()}">❌</c:if>
+									<td>
+										<c:if test="${x.isOpen()}">✔</c:if>
+										<c:if test="${!x.isOpen()}">❌</c:if>
 									</td>
-									<td>${x.getBio() }</td>
+									<td>
+										<c:if test="${x.isActive()}">✔</c:if>
+										<c:if test="${!x.isActive()}">❌</c:if>
+									</td>
+									<td>${x.rating}*</td>
+									<td>${x.getBio()}</td>
 									<td><a
-										href="${pageContext.request.contextPath}/vendor/informationStore?sid=${x.getId()}"
-										class=" fa fa-eye"></a></td>
+										href="${pageContext.request.contextPath}/admin/store/permit?storeId=${x.getId()}"
+										class=" fa fa-check"></a>
+										<a
+										href="${pageContext.request.contextPath}/admin/store/ban?storeId=${x.getId()}"
+										style="margin-left: 20px"
+										class=" fa fa-times"></a>
+										</td>
+									<td>
+									<a href="${pageContext.request.contextPath}/admin/store/detail?storeId=${x.getId()}" class=" fa fa-eye"></a>
+									</td>
 								</tr>
 							</tbody>
 							</c:forEach>

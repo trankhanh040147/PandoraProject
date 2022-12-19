@@ -42,7 +42,6 @@ public class UtilClass {
 		int count=0;
 		
 		for(int i = priceStr.length()-1; i>=0; i--) {
-			System.out.println("char " + i + "=" + priceStr.charAt(i));
 			if(count%3==0 && count!=0){
 				priceFormatted = "."+priceFormatted ;
 			}
@@ -52,4 +51,21 @@ public class UtilClass {
 		
 		return priceFormatted;
 	}
+	
+	public static String PriceInt(double price) {
+		String priceStr = String.format("%.0f", price);
+		String priceFormatted ="";
+		int count=0;
+		
+		for(int i = priceStr.length()-1; i>=0; i--) {
+			if(count%3==0 && count!=0){
+				priceFormatted = ""+priceFormatted ;
+			}
+			priceFormatted =  priceStr.charAt(i) + priceFormatted  ;
+			count++;
+		}
+		
+		return priceFormatted;
+	}
+	
 }

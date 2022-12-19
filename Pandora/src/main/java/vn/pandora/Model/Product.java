@@ -174,21 +174,35 @@ public class Product {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
-	public Product( String name, String description, double price, double promotionalPrice, int quantity,
-			 List<String> listImages, int categoryId,
-			List<Integer> styleValueIds, int storeId) {
-		
+
+	public Product(String name, String description, double price, double promotionalPrice, int quantity,
+			List<String> listImages, int categoryId, List<Integer> styleValueIds, int storeId) {
+
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.promotionalPrice = promotionalPrice;
-		this.quantity = quantity;		
+		this.quantity = quantity;
 		this.listImages = listImages;
 		this.categoryId = categoryId;
 		this.styleValueIds = styleValueIds;
 		this.storeId = storeId;
 	}
-		
+	public Product(String name, String description, double price, double promotionalPrice, int quantity,
+			List<String> listImages, int categoryId, List<Integer> styleValueIds, int storeId,boolean isSelling) {
+
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.promotionalPrice = promotionalPrice;
+		this.quantity = quantity;
+		this.listImages = listImages;
+		this.categoryId = categoryId;
+		this.styleValueIds = styleValueIds;
+		this.storeId = storeId;
+		this.isSelling=isSelling;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
@@ -197,7 +211,5 @@ public class Product {
 				+ ", styleValueIds=" + styleValueIds + ", storeId=" + storeId + ", rating=" + rating + ", createdAt="
 				+ createdAt + ", updatedAt=" + updatedAt + "]";
 	}
-	
-	
 
 }

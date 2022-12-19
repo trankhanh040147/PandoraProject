@@ -19,7 +19,8 @@ public interface iOrderDao {
 
 	Order GetOneJoinUser(int id);
 	
-	List<Order> GetByStatus(String status);
+	List<Order> GetByStatus(String status , int id);
+	List<Order> GetAllByStatus(String status );
 	
 	//Get list
 	List<Order> GetAll(int index, int pagesize);
