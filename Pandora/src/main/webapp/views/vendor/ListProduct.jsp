@@ -66,7 +66,7 @@
 									<td>
 										<a href="${pageContext.request.contextPath}/vendor/updateProduct?pid=${x.id }"
 										class=" fa fa-upload"></a>
-										<a href="${pageContext.request.contextPath}/vendor/informationStore?pid=${x.id }"
+										<a onclick="showMess(${x.id })"
 										class=" pe-7s-close-circle" style="font-size: 20px;"></a> 
 										</td>
 								</tr>
@@ -101,7 +101,13 @@
 			</nav>
 			
 			</form>
-			
+			<script >
+			function showMess( id){
+				var option = confirm(" Bạn có chắc chắn xóa sản phẩm này?");
+				if ( option == true){
+					window.location.href="${Url}vendor/deletedProduct?pid="+id;
+				}
+			}</script>
 			<!-- Body file -->
 		</div>
 	</div>

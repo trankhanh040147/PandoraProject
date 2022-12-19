@@ -10,7 +10,7 @@ public interface iProductDao {
 	void Update(Product product);
 
 	void UpdateSelling(int id, Boolean isSelling);
-
+   void UpdateIsActive(int id );
 	Product GetOne(int id);
 
 	List<Product> GetAll(int index, int pagesize);

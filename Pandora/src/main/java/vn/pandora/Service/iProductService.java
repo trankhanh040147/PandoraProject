@@ -12,14 +12,18 @@ public interface iProductService {
 	void UpdateSelling(int id, Boolean isSelling);
 
 	Product GetOne(int id);
+	
+	 void UpdateIsActive(int id );
 
 	List<Product> GetAll(int index, int pagesize);
 
 	List<Product> findTop_Promo(int index, int pagesize);
 
 	List<Product> findTop_Created(int index, int pagesize);
+
 	void permit(Product product);
 
 	void revoke(Product product);
+
 	List<Product> GetAllByOwnerId(int index, int pagesize, int id);
 }

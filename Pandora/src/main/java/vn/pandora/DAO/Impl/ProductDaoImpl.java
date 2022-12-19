@@ -239,4 +239,19 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 		return null;
 	}
 
+	@Override
+	public void UpdateIsActive(int id) {
+	String sqlString="update Product set isActive='False' where _id=?";
+	
+	try {
+		Connection con= super.getConnection();
+		PreparedStatement ps=con.prepareStatement(sqlString);
+		ps.setInt(1, id);
+	   ps.execute();
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+		
+	}
+
 }

@@ -64,6 +64,12 @@ public class ProductServiceImpl implements iProductService {
 		
 		return productDao.GetAllByOwnerId(index, pagesize, id);
 	}
+
+	@Override
+	public void UpdateIsActive(int id) {
+		productDao.UpdateIsActive(id);
+		
+	}
 	
 
 }

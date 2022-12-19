@@ -20,20 +20,25 @@ import vn.pandora.Service.Impl.StyleValueServiceImpl;
 /**
  * Servlet implementation class ProductController
  */
-@WebServlet(urlPatterns = { "/vendor/ListProduct" })
+@WebServlet(urlPatterns = { "/vendor/ListProduct","/vendor/deletedProduct" })
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ProductServiceImpl procductService = new ProductServiceImpl();
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html; charset=UTF-8");
-	
+	String url = req.getRequestURL().toString();
+	if(url.endsWith("ListProduct")) {
 		LoadProduct(req,resp);
 //		list = procductService.GetAll(0,100);
 //		req.setAttribute("listProduct", list);
 		req.setAttribute("service2", new CategoryServiceImpl());
 		req.setAttribute("service", new StyleValueServiceImpl());
 		req.getRequestDispatcher("/views/vendor/ListProduct.jsp").forward(req, resp);
+	}
+	else if (url.endsWith("deletedProduct")) {
+		DeleteProduct(req,resp);
+	}
 	}
 
 	private void LoadProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -96,7 +101,13 @@ public class ProductController extends HttpServlet {
 		req.setAttribute("listProduct", productList);
 		/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 	}
-
+	private void DeleteProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int id = Integer.parseInt(req.getParameter("pid"));
+		procductService.UpdateIsActive(id);
+		resp.sendRedirect(req.getContextPath()+"/vendor/ListProduct");
+		
+		
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
