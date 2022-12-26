@@ -3,8 +3,8 @@
 <%@ include file="/common/taglib.jsp"%>
 
 <script language="javascript">
-if ("${alert}"!=""){
-	alert("${alert}");
+if ("${alert2}"!=""){
+	alert("${alert2}");
 }
 
 </script>

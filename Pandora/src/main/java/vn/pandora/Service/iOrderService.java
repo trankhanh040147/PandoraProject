@@ -8,7 +8,7 @@ import vn.pandora.Model.Order;
 public interface iOrderService {
 	Order GetOne(int id);
 
-	List<Order> GetAllByOwnerId(int i);
+	List<Order> GetAllByOwnerId(int i , int index, int pagesize);
 
 	void UpdateStatus(int id, String status);
 

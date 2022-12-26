@@ -75,12 +75,24 @@ public class StyleValue {
 	private int styleId;
 	private boolean isDeleted;
 	private Date createdAt;
+
+	public Style getStyle() {
+		return style;
+	}
+
+	public void setStyle(Style style) {
+		this.style = style;
+	}
+
 	private Date updatedAt;
+
+	private Style style;
 
 	@Override
 	public String toString() {
 		return "StyleValue [id=" + id + ", name=" + name + ", styleId=" + styleId + ", isDeleted=" + isDeleted
 				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
+	
 
 }

@@ -17,7 +17,14 @@ public class Transaction {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
-
+	public Transaction( int userId, int storeId, boolean isUp, double amount) {
+		
+		this.userId = userId;
+		this.storeId = storeId;
+		this.isUp = isUp;
+		this.amount = amount;
+		
+	}
 	private int id;
 	private int userId;
 	private int storeId;

@@ -254,4 +254,30 @@ public class ProductDaoImpl extends ConnectJDBC implements iProductDao {
 		
 	}
 
+	public List<Product> findByName(String keyword, int i, int itemsPerPage) {
+		String sql = "select * from Product Where name like (?) ORDER BY name asc  OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+		try {
+			List<Product> list = new ArrayList<Product>();
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, "%"+keyword+"%");
+			ps.setInt(2, i);
+			ps.setInt(3, itemsPerPage);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Product product = new Product(rs.getInt("_id"), rs.getString("name"), rs.getString("description"),
+						rs.getInt("price"), rs.getInt("promotionalPrice"), rs.getInt("quantity"), rs.getInt("sold"),
+						rs.getBoolean("isActive"), rs.getBoolean("isSelling"),
+						UtilClass.toList_Str(rs.getString("listImages")), rs.getInt("categoryId"),
+						UtilClass.toList_Int(rs.getString("styleValueIds")), rs.getInt("storeId"), rs.getInt("rating"),
+						rs.getDate("createdAt"), rs.getDate("updatedAt"));
+				list.add(product);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

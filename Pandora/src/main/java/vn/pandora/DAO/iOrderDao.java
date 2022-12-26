@@ -9,7 +9,7 @@ import vn.pandora.Model.Order;
 public interface iOrderDao {
 	Order GetOne(int id);
 
-	List<Order> GetAllByOwnerId(int i);
+	List<Order> GetAllByOwnerId(int i ,int index, int pagesize);
 
 	void UpdateStatus(int id, String status);
 
@@ -20,8 +20,8 @@ public interface iOrderDao {
 	Order GetOneJoinUser(int id);
 	
 	List<Order> GetByStatus(String status , int id);
-	List<Order> GetAllByStatus(String status );
 	
+	List<Order> GetAllByStatus(String status );	
 	//Get list
 	List<Order> GetAll(int index, int pagesize);
 

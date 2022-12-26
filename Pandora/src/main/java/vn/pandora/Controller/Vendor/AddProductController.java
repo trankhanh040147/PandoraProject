@@ -41,71 +41,84 @@ public class AddProductController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html; charset=UTF-8");
-		HttpSession session = req.getSession();
-		User users = (User) session.getAttribute("account");
-		List<Category> listCategory = new ArrayList<Category>();
-		List<StyleValue> listStyleColor = new ArrayList<StyleValue>();
-		List<StyleValue> listStylesize = new ArrayList<StyleValue>();
-		List<StyleValue> listStyletype = new ArrayList<StyleValue>();
-		List<Store> listStoreId = new ArrayList<Store>();
-		Product product= new Product();
-		
-		
-		listCategory = categoryService.getAll();
-		listStyleColor = styleService.getAlLById(1);// màu
-		listStylesize = styleService.getAlLById(2);// size
-		listStyletype = styleService.getAlLById(3);// type
-		
-		
-		listStoreId = storeServiceImpl.GetStoreByownerId(users.getId());
-		req.setAttribute("listStoreId", listStoreId);
-		req.setAttribute("listCategory", listCategory);
-		req.setAttribute("listStyleColor", listStyleColor);
-		req.setAttribute("listStylesize", listStylesize);
-		req.setAttribute("listStyletype", listStyletype);
-		req.setAttribute("product", product);
-		
-		req.getRequestDispatcher("/views/vendor/ProductAdd.jsp").forward(req, resp);
+LoadData(req, resp);
 	}
-
+private void LoadData(HttpServletRequest req, HttpServletResponse resp)
+		throws ServletException, IOException {
+	HttpSession session = req.getSession();
+	User users = (User) session.getAttribute("account");
+	List<Category> listCategory = new ArrayList<Category>();
+	List<StyleValue> listStyleColor = new ArrayList<StyleValue>();
+	List<StyleValue> listStylesize = new ArrayList<StyleValue>();
+	List<StyleValue> listStyletype = new ArrayList<StyleValue>();
+	List<Store> listStoreId = new ArrayList<Store>();
+	Product product= new Product();
+	
+	
+	listCategory = categoryService.getAll();
+	listStyleColor = styleService.getAlLById(1);// màu
+	listStylesize = styleService.getAlLById(2);// size
+	listStyletype = styleService.getAlLById(3);// type
+	
+	
+	listStoreId = storeServiceImpl.GetStoreByownerId(0,200,users.getId());
+	req.setAttribute("listStoreId", listStoreId);
+	req.setAttribute("listCategory", listCategory);
+	req.setAttribute("listStyleColor", listStyleColor);
+	req.setAttribute("listStylesize", listStylesize);
+	req.setAttribute("listStyletype", listStyletype);
+	req.setAttribute("product", product);
+	
+	req.getRequestDispatcher("/views/vendor/ProductAdd.jsp").forward(req, resp);
+}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		String name = request.getParameter("name");
-		String filenamecover = "";
-		Part part1 = request.getPart("featured_image");
+		try {
+			String name = request.getParameter("name");
+			String filenamecover = "";
+			Part part1 = request.getPart("featured_image");
 
-		if (part1.getSubmittedFileName() != "") {
-			// Tạo thư mục lưu file nếu chưa tồn tại
-			String realPath1 = Constant.DIR;
+			if (part1.getSubmittedFileName() != "") {
+				// Tạo thư mục lưu file nếu chưa tồn tại
+				String realPath1 = Constant.DIR;
 
-			if (!Files.exists(Paths.get(realPath1))) {
-				Files.createDirectory(Paths.get(realPath1));
+				if (!Files.exists(Paths.get(realPath1))) {
+					Files.createDirectory(Paths.get(realPath1));
+				}
+
+				// Upload file bằng Multipart
+				filenamecover = Paths.get(part1.getSubmittedFileName()).getFileName().toString();
+				part1.write(realPath1 + "/" + filenamecover);
 			}
-
-			// Upload file bằng Multipart
-			filenamecover = Paths.get(part1.getSubmittedFileName()).getFileName().toString();
-			part1.write(realPath1 + "/" + filenamecover);
+			List<String> listImages = new ArrayList<String>();
+			String descripsion = request.getParameter("descripsion");
+			int quantity = Integer.parseInt(request.getParameter("quantity"));
+			int category = Integer.parseInt(request.getParameter("category"));
+			int storeId = Integer.parseInt(request.getParameter("storeId"));
+			int color = Integer.parseInt(request.getParameter("Style-color"));
+			int size = Integer.parseInt(request.getParameter("Style-size"));
+			int type = Integer.parseInt(request.getParameter("Style-type"));
+			double price = Integer.parseInt(request.getParameter("price"));
+			List<Integer> styleVaLueIds = new ArrayList<Integer>();
+		
+			styleVaLueIds.add(color);
+			styleVaLueIds.add(size);
+			styleVaLueIds.add(type);
+			listImages.add(filenamecover);
+		
+			Product product = new Product(name, descripsion, price, price, quantity, listImages, category, styleVaLueIds, storeId);
+			productService.Add(product);
+			response.sendRedirect(request.getContextPath() + "/vendor/ListProduct");
+		
+		} catch (Exception e) {
+			String test="Tạo cửa hàng không thành công ! Bạn cần nhập đầy đủ thông tin!";
+	    	request.setAttribute("alert2", test);
+			LoadData(request, response);
 		}
-		List<String> listImages = new ArrayList<String>();
-		String descripsion = request.getParameter("descripsion");
-		int quantity = Integer.parseInt(request.getParameter("quantity"));
-		int category = Integer.parseInt(request.getParameter("category"));
-		int storeId = Integer.parseInt(request.getParameter("storeId"));
-		int color = Integer.parseInt(request.getParameter("Style-color"));
-		int size = Integer.parseInt(request.getParameter("Style-size"));
-		int type = Integer.parseInt(request.getParameter("Style-type"));
-		List<Integer> styleVaLueIds = new ArrayList<Integer>();
-		styleVaLueIds.add(color);
-		styleVaLueIds.add(size);
-		styleVaLueIds.add(type);
-		double price = Integer.parseInt(request.getParameter("price"));
-		listImages.add(filenamecover);
-		Product product = new Product(name, descripsion, price, price, quantity, listImages, category, styleVaLueIds, storeId);
-		productService.Add(product);
-		response.sendRedirect(request.getContextPath() + "/vendor/ListProduct");
+		
 	}
 
 }

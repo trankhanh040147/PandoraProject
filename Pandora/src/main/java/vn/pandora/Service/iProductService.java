@@ -26,4 +26,6 @@ public interface iProductService {
 	void revoke(Product product);
 
 	List<Product> GetAllByOwnerId(int index, int pagesize, int id);
+
+	List<Product> findByName(String keyword, int i, int itemsPerPage);
 }

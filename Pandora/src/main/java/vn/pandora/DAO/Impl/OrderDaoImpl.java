@@ -37,13 +37,15 @@ public class OrderDaoImpl extends ConnectJDBC implements iOrderDao {
 	}
 
 	@Override
-	public List<Order> GetAllByOwnerId(int i) {
-		String sql = "select * from [Order] join Store on [Order].storeId=store._id where Store.ownerId=?  ";
+	public List<Order> GetAllByOwnerId(int id , int index,int pagesize) {
+		String sql = "select * from [Order] join Store on [Order].storeId=store._id where Store.ownerId=? ORDER BY [Order]._id asc  OFFSET ? ROWS FETCH NEXT ? ROWS ONLY ";
 
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, i);
+            ps.setInt(1, id);
+            ps.setInt(2, index);
+            ps.setInt(3, pagesize);
 			ResultSet rs = ps.executeQuery();
 			List<Order> list = new ArrayList<Order>();
 			while (rs.next()) {

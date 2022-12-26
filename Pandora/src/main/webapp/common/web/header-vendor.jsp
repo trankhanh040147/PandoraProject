@@ -58,18 +58,11 @@
 						<button class="close"></button>
 					</div>
 					<ul class="header-menu nav">
-						<li class="nav-item"><a href="${pageContext.request.contextPath}/vendor/home"
+						<li class="nav-item"><a href="${pageContext.request.contextPath}/vendor/listStore"
 							class="nav-link"> <i class="nav-link-icon pe-7s-home">
-							</i> Home
+							</i> Trang chủ
 						</a></li>
-						<li class="btn-group nav-item"><a href="javascript:void(0);"
-							class="nav-link"> <i class="nav-link-icon fa fa-edit"></i>
-								Projects
-						</a></li>
-						<li class="dropdown nav-item"><a href="javascript:void(0);"
-							class="nav-link"> <i class="nav-link-icon fa fa-cog"></i>
-								Settings
-						</a></li>
+						
 					</ul>
 				</div>
 				<div class="app-header-right">
@@ -96,15 +89,20 @@
 									</div>
 								</div>
 								<div class="widget-content-left  ml-3 header-user-info">
-									<div class="widget-heading">Alina Mclourd</div>
-									<div class="widget-subheading">VP People Manager</div>
+									<div class="widget-heading">${account.lastname}&nbsp${account.firstname}</div>
+									<div class="widget-subheading">Vendor</div>
 								</div>
+								
+								<!-- Logout  -->
 								<div class="widget-content-right header-user-info ml-3">
-									<button type="button"
-										class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-										<i class="fa text-white fa-calendar pr-1 pl-1"></i>
-									</button>
+									<a type="button" href="${Url}logout"
+										class="btn-shadow p-1 btn btn-danger btn-sm show-toastr-example" 
+										style="color: #fff;background-color: #d92550; border-color: #d92550;">
+										<i class="fa text-white fa-sign-out-alt pr-1 pl-1"></i>
+									</a>
 								</div>
+								<!-- Logout  -->
+								
 							</div>
 						</div>
 					</div>
@@ -178,16 +176,6 @@
 							</a></li>
 							<li><a href="${pageContext.request.contextPath}/vendor/Withdraw"> <i
 									class="metismenu-icon pe-7s-cash"> </i>Rút tiền
-							</a></li>
-							<li class="app-sidebar__heading">Thống kê doanh thu</li>
-							<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByProduct"> <i
-									class="metismenu-icon fa fa-database"> </i>Thống kê theo sản phẩm
-							</a></li>
-							<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByOrder"> <i
-									class="metismenu-icon fa fa-database"> </i>Thống kê theo đơn hàng 
-							</a></li>
-							<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByDate"> <i
-									class="metismenu-icon fa fa-database"> </i>Thống kê theo thời gian
 							</a></li>
 							
 						</ul>

@@ -2,8 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 
+<script language="javascript">
+if ("${alert3}"!=""){
+	alert("${alert3}");
+}
 
-<div class="app-main__outer"></div>
+</script>
+<div class="app-main__outer">
 <div class="app-main__inner">
 	<div class="app-page-title">
 		<div class="page-title-wrapper">
@@ -24,7 +29,7 @@
 		<!-- Body file -->
 		<div class="col-md-6">
 			<div class="main-card mb-3 card"
-				style="width: 800px; margin-left: 200px">
+				style="width: 800px;margin-left: 200px">
 				<div class="card-body">
 					<h5 class="card-title" style="margin-left: 330px">Điền thông
 						tin rút tiền</h5>
@@ -39,9 +44,21 @@
 								name="password" id="" password"" placeholder="Nhập mật khẩu"
 								type="password" class="form-control">
 						</div>
+							 <div class="position-relative form-group">
+								<label for="storeId" class="">Rút tiền của cửa hàng:</label>
+								<select id="cars" name="storeId">
+									<c:forEach items="${listStoreId}" var="a">
+									<option value="${a.id}" >
+									${a.name.toUpperCase()}  có số tiền trong ví là : ${a.e_wallet} 
+									</option>
+									</c:forEach>																		
+								</select>
+							
+							</div>
+							
 						<div class="position-relative form-group">
-							<label for="bio" class="">Số tiền</label><input name="bio"
-								id="bio" placeholder="Nhập số tiền" type="text"
+							<label for="amount" class="">Số tiền</label><input name="amount"
+								id="amount" placeholder="Nhập số tiền" type="text"
 								class="form-control">
 						</div>
 						<div class="position-relative form-group">
@@ -68,4 +85,6 @@
 			</div>
 					<!-- Body file -->
 				</div>
-			</div>
+				</div>
+				
+			

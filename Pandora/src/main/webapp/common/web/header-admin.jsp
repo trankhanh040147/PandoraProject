@@ -58,17 +58,9 @@
 						<button class="close"></button>
 					</div>
 					<ul class="header-menu nav">
-						<li class="nav-item"><a href="${pageContext.request.contextPath}/vendor/home"
+						<li class="nav-item"><a href="${pageContext.request.contextPath}/admin/home"
 							class="nav-link"> <i class="nav-link-icon pe-7s-home">
-							</i> Home
-						</a></li>
-						<li class="btn-group nav-item"><a href="javascript:void(0);"
-							class="nav-link"> <i class="nav-link-icon fa fa-edit"></i>
-								Projects
-						</a></li>
-						<li class="dropdown nav-item"><a href="javascript:void(0);"
-							class="nav-link"> <i class="nav-link-icon fa fa-cog"></i>
-								Settings
+							</i> Trang chủ
 						</a></li>
 					</ul>
 				</div>
@@ -96,14 +88,15 @@
 									</div>
 								</div>
 								<div class="widget-content-left  ml-3 header-user-info">
-									<div class="widget-heading">Alina Mclourd</div>
-									<div class="widget-subheading">VP People Manager</div>
+									<div class="widget-heading">${account.firstname}</div>
+									<div class="widget-subheading">${account.role}</div>
 								</div>
 
 								<!-- Logout  -->
 								<div class="widget-content-right header-user-info ml-3">
 									<a type="button" href="${Url}logout"
-										class="btn-shadow p-1 btn btn-danger btn-sm show-toastr-example">
+										class="btn-shadow p-1 btn btn-danger btn-sm show-toastr-example"
+										style="color: #fff;background-color: #d92550; border-color: #d92550;">
 										<i class="fa text-white fa-sign-out-alt pr-1 pl-1"></i>
 									</a>
 								</div>
@@ -155,7 +148,7 @@
 						<ul class="vertical-nav-menu">
 						
 							<li class="app-sidebar__heading">Quản lý tài khoản</li>
-								<li><a href="${pageContext.request.contextPath}/admin/ManagerUser"> <i
+								<li><a href="${pageContext.request.contextPath}/admin/ManagerUser">> <i
 										class="metismenu-icon fa fa-list-alt"></i>Danh sách tài khoản
 								</a></li>
 						
@@ -163,7 +156,6 @@
 								<li><a href="${pageContext.request.contextPath}/admin/store"> <i
 										class="metismenu-icon fa fa-list-alt"></i> Danh sách cửa hàng 
 								</a></li>
-								
 							
 							<li class="app-sidebar__heading">Quản lý đơn hàng</li>
 								<li><a href="${pageContext.request.contextPath}/admin/order"> <i
@@ -175,22 +167,12 @@
 								<li><a href="${pageContext.request.contextPath}/admin/product"> <i
 										class="metismenu-icon fa fa-list-alt"> </i>Danh sách sản phẩm
 								</a></li>
-							
-							<li class="app-sidebar__heading">Quản lý ví điện tử </li>
-								<li><a href="${pageContext.request.contextPath}/admin/transaction"> <i
-										class="metismenu-icon fa fa-history"> </i>Lịch sử giao dịch 
+							<li class="app-sidebar__heading">Quản lý ví thuộc tính </li>
+								<li><a href="${pageContext.request.contextPath}/admin/style-value"> <i
+										class="metismenu-icon fa fa-tape"> </i>Danh sách thuộc tính
 								</a></li>
+								
 						
-							<li class="app-sidebar__heading">Thống kê doanh thu</li>
-								<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByProduct"> <i
-										class="metismenu-icon fa fa-database"> </i>Thống kê theo sản phẩm
-								</a></li>
-								<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByOrder"> <i
-										class="metismenu-icon fa fa-database"> </i>Thống kê theo đơn hàng 
-								</a></li>
-								<li><a href="${pageContext.request.contextPath}/vendor/StatisticalByDate"> <i
-										class="metismenu-icon fa fa-database"> </i>Thống kê theo thời gian
-								</a></li>
 							
 						</ul>
 					</div>

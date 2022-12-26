@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import vn.pandora.Model.Order;
+import vn.pandora.Model.Product;
 import vn.pandora.Model.User;
 import vn.pandora.Service.Impl.OrderServiceImpl;
 
@@ -30,9 +31,9 @@ public class OrderController extends HttpServlet {
 		 HttpSession session = req.getSession();
 		User users = (User) session.getAttribute("account");
 		
-		List<Order> listOrders= new ArrayList<Order>();
-		listOrders= orderService.GetAllByOwnerId(users.getId());
-		req.setAttribute("listOrders", listOrders);
+	
+	
+		LoadOrder(req, resp);
 		
 		List<Order> listOrdersNotProcessed= new ArrayList<Order>();
 		listOrdersNotProcessed= orderService.GetByStatus("not processed",users.getId());
@@ -86,8 +87,89 @@ public class OrderController extends HttpServlet {
 	}
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	private void LoadOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// Set số item mỗi trang
+				int ItemsPerPage = 5;
+
+				// Set tổng số trang hiển thị trên view
+				int PagesDisplay = 9;
+
+				/*
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 */
+				// Lấy dữ liệu từ view
+				String indexPage = req.getParameter("index");
+				// Xử lứ trường hợp không truyền vào index
+				if (indexPage == null) {
+					indexPage = "1";
+				}
+				int index = Integer.parseInt(indexPage);
+				/*
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 */
+
+				/* Phân trang */
+
+				/*
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 */
+				// Lấy dữ liệu theo số trang
+				HttpSession session = req.getSession();
+				User users = (User) session.getAttribute("account");
+				List<Order> orderList = orderService.GetAllByOwnerId(users.getId() ,(index - 1) * ItemsPerPage, ItemsPerPage
+						);
+
+				/*
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 */
+
+				/*
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 */
+				// Đếm tổng số items
+
+				// Cách 2: Lấy danh sách tất cả items và đếm số items
+				List<Order> orderListAll = orderService.GetAllByOwnerId( users.getId(),0, 200);
+				int totalItems = orderListAll.size();
+				/*
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 */
+
+				// Tìm trang cuối cùng của toàn bộ danh sách items
+				int lastPage = totalItems / ItemsPerPage + (totalItems % ItemsPerPage != 0 ? 1 : 0);
+
+				// Xác định trang đầu (head) và trang cuối (tail)
+				int head = index - PagesDisplay / 2;
+				int tail = index + PagesDisplay / 2;
+				head = head >= 1 ? head : 1;
+				tail = tail <= lastPage ? tail : lastPage;
+				head = tail - PagesDisplay + 1 >= 1 ? tail - PagesDisplay + 1 : head;
+				tail = head + PagesDisplay - 1 <= lastPage ? head + PagesDisplay - 1 : tail;
+
+				/* Phân trang */
+
+				/*
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 */
+				// Truyền dữ liệu lên view
+				req.setAttribute("index", index);
+				req.setAttribute("startPage", head);
+				req.setAttribute("endPage", tail);
+				req.setAttribute("lastPage", lastPage);
+
+				// Dữ liệu xử lí
+				req.setAttribute("listOrders", orderList);
+				/*
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+				 */
 	}
 
 }

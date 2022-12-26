@@ -17,7 +17,7 @@ public interface iStoreService {
 
 	List<Integer> GetIdSrore(int id);
 
-	List<Store> GetStoreByownerId(int id);
+	List<Store> GetStoreByownerId(int index, int pagesize,int id);
 
 	List<Store> getAll(int index, int pagesize);
 

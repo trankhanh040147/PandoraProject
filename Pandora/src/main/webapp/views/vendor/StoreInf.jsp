@@ -41,7 +41,6 @@
 									</div>
 
 
-
 									<div class="content">
 										<div class="author">
 											<label> <input type="file" accept="image/*"

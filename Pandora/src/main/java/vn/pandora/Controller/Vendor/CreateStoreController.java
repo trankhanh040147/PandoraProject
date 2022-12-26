@@ -35,6 +35,11 @@ public class CreateStoreController extends HttpServlet {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		String name= req.getParameter("name");
 		String bio= req.getParameter("bio");
 		String filenameavatar = "";
@@ -94,7 +99,7 @@ public class CreateStoreController extends HttpServlet {
 		resp.sendRedirect(req.getContextPath()+"/vendor/home");}
 	    else {
 	    	String test="Tạo cửa hàng không thành công ! Bạn cần nhập đầy đủ thông tin!";
-	    	req.setAttribute("alert", test);
+	    	req.setAttribute("alert2", test);
 			req.getRequestDispatcher("/views/vendor/NewStore.jsp").forward(req, resp);
 	    }
 	}

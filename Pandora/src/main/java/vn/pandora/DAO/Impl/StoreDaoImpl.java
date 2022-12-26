@@ -134,13 +134,15 @@ public class StoreDaoImpl extends ConnectJDBC implements iStoreDao {
 	}
 
 	@Override
-	public List<Store> GetStoreByownerId(int id) {
-		String sql = "select * from Store where ownerID=? and isActive='true'";
+	public List<Store> GetStoreByownerId( int index, int pagesize,int id) {
+		String sql = "select * from Store where ownerID=? and isActive='true'  ORDER BY Store._id asc  OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
 		try {
 			List<Store> list = new ArrayList<Store>();
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
+			ps.setInt(2, index);
+			ps.setInt(3, pagesize);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Store store = new Store(rs.getInt("_id"), rs.getString("name"), rs.getString("bio"),

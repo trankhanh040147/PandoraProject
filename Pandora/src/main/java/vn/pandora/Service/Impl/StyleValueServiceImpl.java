@@ -20,4 +20,26 @@ public class StyleValueServiceImpl implements iStyleValueService {
 		return styleValueDao.getAllById(id);
 	}
 
+	@Override
+	public List<StyleValue> getAll(int index, int pagesize) {
+		return styleValueDao.getAll(index, pagesize);
+	}
+
+	@Override
+	public void insert(StyleValue styleValue) {
+		styleValueDao.insert(styleValue);
+		
+	}
+
+	@Override
+	public void update(StyleValue styleValue) {
+		styleValueDao.update(styleValue);
+	}
+
+	@Override
+	public void delete(int id) {
+		styleValueDao.delete(id);
+		
+	}
+
 }

@@ -40,16 +40,16 @@ public class HomeController extends HttpServlet {
 		
 		// Trang chủ cho vendor
 		if (url.contains("vendor")) {
-			Constant.setAlert(req, resp, "success","Chào mừng bạn đến trang chủ,  " +account_cur.getLastname() + " " + account_cur.getFirstname()+ "!");
-			req.getRequestDispatcher("/views/vendor/index.jsp").forward(req, resp);
+//			Constant.setAlertSession(req, resp, "success","Chào mừng bạn đến trang chủ,  " +account_cur.getLastname() + " " + account_cur.getFirstname()+ "!");
+			resp.sendRedirect(req.getContextPath() + "/vendor/listStore");
 		}
 		// Trang chủ cho admin
 		else if (url.contains("admin")) {
-			req.getRequestDispatcher("/views/admin/index.jsp").forward(req, resp);
+			resp.sendRedirect(req.getContextPath() + "/admin/ManagerUser");
 		} else {
 			LoadCategories(req,resp);
 			LoadTopProducts(req,resp);
-			Constant.setAlert(req, resp, "success","Chào mừng bạn đến với trang chủ Pandora!");
+//			Constant.setAlert(req, resp, "success","Chào mừng bạn đến với trang chủ Pandora!");
 			req.getRequestDispatcher("/views/web/home.jsp").forward(req, resp);
 		}
 

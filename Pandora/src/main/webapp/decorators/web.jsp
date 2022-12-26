@@ -91,10 +91,13 @@
 
 </head>
 <body>
+
+
 <!--  Gắn header theo role -->
 	<c:set value="${account.role}" var="role" />
 
 	<c:choose>
+		
 		<c:when test="${role == 'customer'}">
 			<c:if test="${fn:endsWith(pageContext.request.requestURI, 'home')}">
 			    <jsp:include page="/common/web/header-customer-home.jsp"></jsp:include>

@@ -19,4 +19,15 @@ public class TransactionServiceImpl implements iTransactionService {
 		return transactionDaoImpl.GetOne(id);
 	}
 
+	@Override
+	public List<Transaction> GetAllByIdOwner(int index, int pagesize, int id) {
+	return transactionDaoImpl.GetAllByIdOwner(index, pagesize, id);
+	}
+
+	@Override
+	public void Add(Transaction transaction) {
+		 transactionDaoImpl.Add(transaction);
+		
+	}
+
 }

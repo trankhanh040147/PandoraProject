@@ -17,7 +17,7 @@ public class ConnectJDBC {
 	
 	//Connection của P.Khánh
 	private final String serverName = "localhost";
-	private final String dbName = "LTWeb";
+	private final String dbName = "LtWeb";
 	private final String portNumber = "1433";
 	private final String instance = "";
 	private final String userID = "sa";

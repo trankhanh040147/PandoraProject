@@ -10,7 +10,9 @@ public interface iProductDao {
 	void Update(Product product);
 
 	void UpdateSelling(int id, Boolean isSelling);
-   void UpdateIsActive(int id );
+
+	void UpdateIsActive(int id);
+
 	Product GetOne(int id);
 
 	List<Product> GetAll(int index, int pagesize);
@@ -22,5 +24,6 @@ public interface iProductDao {
 	void permit(Product product);
 
 	void revoke(Product product);
-	List<Product> GetAllByOwnerId(int index, int pagesize , int id);
+
+	List<Product> GetAllByOwnerId(int index, int pagesize, int id);
 }

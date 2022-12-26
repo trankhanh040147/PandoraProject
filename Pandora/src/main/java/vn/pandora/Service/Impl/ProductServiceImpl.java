@@ -49,27 +49,31 @@ public class ProductServiceImpl implements iProductService {
 
 	@Override
 	public void permit(Product product) {
-	productDao.permit(product);
-		
+		productDao.permit(product);
+
 	}
 
 	@Override
 	public void revoke(Product product) {
 		productDao.revoke(product);
-		
+
 	}
 
 	@Override
 	public List<Product> GetAllByOwnerId(int index, int pagesize, int id) {
-		
+
 		return productDao.GetAllByOwnerId(index, pagesize, id);
 	}
 
 	@Override
 	public void UpdateIsActive(int id) {
 		productDao.UpdateIsActive(id);
-		
+
 	}
-	
+
+	@Override
+	public List<Product> findByName(String keyword, int i, int itemsPerPage) {
+		return productDao.findByName(keyword, i, itemsPerPage);
+	}
 
 }

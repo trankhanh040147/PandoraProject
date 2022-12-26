@@ -47,18 +47,20 @@
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="${Url}home" class="text-decoration-none">
-                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">P</span>andora</h1>
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
                 <form action="">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
+                        <input type="text" id="keyword" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                        <div class="input-group-append" style="cursor: pointer;">
+	                        <a onclick="this.href='${Url}search/product?keyword='+document.getElementById('keyword').value">
+		                        <span class="input-group-text bg-transparent text-primary" style="padding:0.65rem 0.75rem;">
+		                            <i class="fa fa-search"></i>
+		                        </span>
+	                        </a>
+	                    </div>
                     </div>
                 </form>
             </div>
@@ -92,18 +94,17 @@
                             <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
                                 <a href="?????" class="dropdown-item">Quần áo nữ</a>
                                 <a href="?????" class="dropdown-item">Quần áo Nam</a>
-                                <a href="?????" class="dropdown-item"></a>
                             </div>
                         </div>
-                        <a href="?????" class="nav-item nav-link">Shirts</a>
-                        <a href="?????" class="nav-item nav-link">Jeans</a>
-                        <a href="?????" class="nav-item nav-link">Swimwear</a>
-                        <a href="?????" class="nav-item nav-link">Sleepwear</a>
-                        <a href="?????" class="nav-item nav-link">Sportswear</a>
-                        <a href="?????" class="nav-item nav-link">Jumpsuits</a>
-                        <a href="?????" class="nav-item nav-link">Blazers</a>
-                        <a href="?????" class="nav-item nav-link">Jackets</a>
-                        <a href="?????" class="nav-item nav-link">Shoes</a>
+                        <a href="?????" class="nav-item nav-link">Giày dép</a>	
+                        <a href="?????" class="nav-item nav-link">Ba lô</a>	
+                        <a href="?????" class="nav-item nav-link">Đồng hồ</a>	
+                        <a href="?????" class="nav-item nav-link">Đồ chơi</a>	
+                        <a href="?????" class="nav-item nav-link">Điện thoại & phụ kiện</a>	
+                        <a href="?????" class="nav-item nav-link">Máy tính & LapTop</a>	
+                        <a href="?????" class="nav-item nav-link">Thiết bị gia dụng</a>	
+                        <a href="?????" class="nav-item nav-link">Thể thao & Du lịch</a>	
+                        <a href="?????" class="nav-item nav-link">Phụ kiện & Trang sức nữ</a>
                     </div>
                 </nav>
             </div>

@@ -16,8 +16,8 @@ public class OrderServiceImpl implements iOrderService {
 	}
 
 	@Override
-	public List<Order> GetAllByOwnerId(int i) {
-		return orderDao.GetAllByOwnerId(i);
+	public List<Order> GetAllByOwnerId(int i, int index , int pagesize) {
+		return orderDao.GetAllByOwnerId(i ,index ,pagesize);
 	}
 
 	@Override

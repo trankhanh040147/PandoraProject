@@ -44,7 +44,7 @@
 								<tr>
 									<th>STT</th>
 									<th>Tên cửa hàng</th>
-									<th>Id cửa hàng</th>
+									<th>Mã cửa hàng</th>
 									<th>Trạng thái</th>
 									<th style="width: 40% ;text-align: center; ">Mô tả</th>
 									<th></th>
@@ -72,8 +72,28 @@
 					</div>
 				</div>
 			</div>
-
+		<c:url value="/vendor/listStore?" var="listUrl" />
+			
+			<nav class="" aria-label="Page navigation example"style=" margin-left:600px">
+				<ul class="pagination">
+					<li class="page-item <c:if test="${index == '1'}">disabled</c:if>">
+					<a href="${listUrl}index=1"
+						class="page-link" aria-label="Previous"><span
+							aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
+					
+					<c:forEach begin="${startPage}" end="${endPage}" var="i">
+						<li class="page-item <c:if test="${index == i.toString()}">active</c:if>">
+							<a class="page-link" href="${listUrl}index=${i}">${i}</a>
+						</li>
+					</c:forEach>
+						
+					<li class="page-item <c:if test="${index == lastPage}">disabled</c:if>"><a href="${listUrl}index=${lastPage}"
+						class="page-link" aria-label="Next"><span aria-hidden="true">»</span><span
+							class="sr-only">Next</span></a></li>
+				</ul>
+			</nav>
 			<!-- Body file -->
 		</div>
+	
 		</form>
 	</div>

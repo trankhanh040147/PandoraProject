@@ -37,7 +37,7 @@
 									<th>Phân loại</th>
 									<th style="width:150px; text-align: center; ">Kiểu</th>
 									<th>Trạng thái</th>
-									<th>Id cửa hàng bán</th>
+									<th>Mã cửa hàng bán</th>
 									<th></th>
 								</tr>
 							</thead>
@@ -67,7 +67,7 @@
 										<a href="${pageContext.request.contextPath}/vendor/updateProduct?pid=${x.id }"
 										class=" fa fa-upload"></a>
 										<a onclick="showMess(${x.id })"
-										class=" pe-7s-close-circle" style="font-size: 20px;"></a> 
+										class=" pe-7s-close-circle" style="font-size: 20px;cursor: pointer;"></a> 
 										</td>
 								</tr>
 							</c:forEach>
@@ -81,7 +81,7 @@
  --%>			
  			<c:url value="/vendor/ListProduct?" var="listUrl" />
 			
-			<nav class="" aria-label="Page navigation example">
+			<nav class="" aria-label="Page navigation example" style=" margin-left:600px">
 				<ul class="pagination">
 					<li class="page-item <c:if test="${index == '1'}">disabled</c:if>">
 					<a href="${listUrl}index=1"

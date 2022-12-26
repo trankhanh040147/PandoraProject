@@ -40,9 +40,9 @@ public class StoreServiceImpl implements iStoreService {
 	}
 
 	@Override
-	public List<Store> GetStoreByownerId(int id) {
+	public List<Store> GetStoreByownerId(int index, int pagesize,int id) {
 
-		return storeDao.GetStoreByownerId(id);
+		return storeDao.GetStoreByownerId(index,pagesize, id);
 	}
 
 	@Override

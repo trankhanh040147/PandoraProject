@@ -188,8 +188,9 @@ public class Product {
 		this.styleValueIds = styleValueIds;
 		this.storeId = storeId;
 	}
+
 	public Product(String name, String description, double price, double promotionalPrice, int quantity,
-			List<String> listImages, int categoryId, List<Integer> styleValueIds, int storeId,boolean isSelling) {
+			List<String> listImages, int categoryId, List<Integer> styleValueIds, int storeId, boolean isSelling) {
 
 		this.name = name;
 		this.description = description;
@@ -200,7 +201,7 @@ public class Product {
 		this.categoryId = categoryId;
 		this.styleValueIds = styleValueIds;
 		this.storeId = storeId;
-		this.isSelling=isSelling;
+		this.isSelling = isSelling;
 	}
 
 	@Override

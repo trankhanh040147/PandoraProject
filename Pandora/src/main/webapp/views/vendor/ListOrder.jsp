@@ -27,73 +27,25 @@
 			<div class="mb-3 card">
 				<div class="card-header card-header-tab-animation">
 					<ul class="nav nav-justified">
+						
 						<li class="nav-item"><a data-toggle="tab" href="#tab-eg115-0"
-							class="active nav-link">Tất cả</a></li>
+							class=" nav-link">Chờ xác nhận</a></li>
 						<li class="nav-item"><a data-toggle="tab" href="#tab-eg115-1"
-							class="nav-link">Chờ xác nhận</a></li>
-						<li class="nav-item"><a data-toggle="tab" href="#tab-eg115-2"
 							class="nav-link">Chờ lấy hàng</a></li>
-						<li class="nav-item"><a data-toggle="tab" href="#tab-eg115-3"
+						<li class="nav-item"><a data-toggle="tab" href="#tab-eg115-2"
 							class="nav-link">Đang giao</a></li>
-						<li class="nav-item"><a data-toggle="tab" href="#tab-eg115-4"
+						<li class="nav-item"><a data-toggle="tab" href="#tab-eg115-3"
 							class="nav-link">Đã giao </a></li>
+							<li class="nav-item"><a data-toggle="tab" href="#tab-eg115-4"
+							class=" nav-link">Đã hủy</a></li>
 						<li class="nav-item"><a data-toggle="tab" href="#tab-eg115-5"
-							class="nav-link">Đã hủy</a></li>
+							class="nav-link active">Tất cả</a></li>
 
 					</ul>
 				</div>
 				<div class="card-body">
 					<div class="tab-content">
-						<div class="tab-pane active" id="tab-eg115-0" role="tabpanel">
-						
-								
-							<div class="col-lg-12">
-								<div class="main-card mb-3 card">
-									<div class="card-body">
-										<h5 class="card-title" style="margin-left: 350px;">Danh
-											sách đơn hàng</h5>
-										<table class="mb-0 table table-hover">
-											<thead>
-												<tr>
-													<th>STT</th>
-													<th>Mã đơn hàng</th>
-													<th>Mã cửa hàng</th>
-													<th>Mã khách hàng</th>
-													<th>Số điện thoại</th>
-													<th>Thành tiền</th>
-													<th>Mã vẫn chuyển</th>
-													<th style="width: 200px; text-align: center;">Địa chỉ</th>
-													<th>Trạng thái</th>
-													<th></th>
-												</tr>
-											</thead>
-
-											<c:forEach items="${listOrders}" var="x" varStatus="loop">
-												<tbody>
-													<tr>
-													<td style="color:blue;">${loop.count}</td>
-
-														<td>${x.id}</td>
-														<td>${x.storeId}</td>
-														<td>${x.userId }</td>
-														<td>${x.phone }</td>
-														<td>${x.amountFromUser }</td>
-														<td>${x.deliveryId}</td>
-														<td>${x.address }</td>
-														<td>${x.status }</td>
-														<td><a
-															href="${pageContext.request.contextPath}/vendor/OrderDetail?oid=${x.id}"
-															class=" fa fa-eye"></a> </td>
-													</tr>
-												</tbody>
-											</c:forEach>
-
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane" id="tab-eg115-1" role="tabpanel">
+							<div class="tab-pane " id="tab-eg115-0" role="tabpanel">
 							
 							<div class="col-lg-12">
 								<div class="main-card mb-3 card">
@@ -141,7 +93,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane" id="tab-eg115-2" role="tabpanel">
+						<div class="tab-pane" id="tab-eg115-1" role="tabpanel">
 							
 							<div class="col-lg-12">
 								<div class="main-card mb-3 card">
@@ -189,7 +141,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane" id="tab-eg115-3" role="tabpanel">
+						<div class="tab-pane" id="tab-eg115-2" role="tabpanel">
 							
 							<div class="col-lg-12">
 								<div class="main-card mb-3 card">
@@ -237,7 +189,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane" id="tab-eg115-4" role="tabpanel">
+						<div class="tab-pane" id="tab-eg115-3" role="tabpanel">
 							<div class="app-header-left">
 								<div class="search-wrapper">
 									<div class="input-holder">
@@ -292,7 +244,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane" id="tab-eg115-5" role="tabpanel">
+						<div class="tab-pane " id="tab-eg115-4" role="tabpanel">
 							
 							<div class="col-lg-12">
 								<div class="main-card mb-3 card">
@@ -336,8 +288,90 @@
 								</div>
 							</div>
 						</div>
+							
+						
+<div class="tab-pane active" id="tab-eg115-5" role="tabpanel">
 
-					</div>
+
+								<div class="col-lg-12">
+									<div class="main-card mb-3 card">
+										<div class="card-body">
+											<h5 class="card-title" style="margin-left: 350px;">Danh
+												sách đơn hàng</h5>
+											<table class="mb-0 table table-hover">
+												<thead>
+													<tr>
+														<th>STT</th>
+														<th>Mã đơn hàng</th>
+														<th>Mã cửa hàng</th>
+														<th>Mã khách hàng</th>
+														<th>Số điện thoại</th>
+														<th>Thành tiền</th>
+														<th>Mã vẫn chuyển</th>
+														<th style="width: 200px; text-align: center;">Địa chỉ</th>
+														<th>Trạng thái</th>
+														<th></th>
+													</tr>
+												</thead>
+
+												<c:forEach items="${listOrders}" var="x" varStatus="loop">
+													<tbody>
+														<tr>
+															<td style="color: blue;">${loop.count}</td>
+
+															<td>${x.id}</td>
+															<td>${x.storeId}</td>
+															<td>${x.userId }</td>
+															<td>${x.phone }</td>
+															<td>${x.amountFromUser }</td>
+															<td>${x.deliveryId}</td>
+															<td>${x.address }</td>
+															<td>
+															<c:if test="${x.status=='delivered'}">Đã giao</c:if>
+															<c:if test="${x.status=='not processed'}">Chờ xác nhận</c:if>
+															<c:if test="${x.status=='processing'}">Đã chờ lấy hàng</c:if>
+															<c:if test="${x.status=='shipped'}">Đang giao</c:if>
+															
+															</td>
+															<td><a
+																href="${pageContext.request.contextPath}/vendor/OrderDetail?oid=${x.id}"
+																class=" fa fa-eye"></a></td>
+														</tr>
+													</tbody>
+												</c:forEach>
+
+											</table>
+											<c:url value="/vendor/listOrder?" var="listUrl" />
+
+								<nav class="" aria-label="Page navigation example" style=" margin-left:600px">
+									<ul class="pagination">
+										<li
+											class="page-item <c:if test="${index == '1'}">disabled</c:if>">
+											<a href="${listUrl}index=1" class="page-link"
+											aria-label="Previous"><span aria-hidden="true">«</span><span
+												class="sr-only">Previous</span></a>
+										</li>
+
+										<c:forEach begin="${startPage}" end="${endPage}" var="i">
+											<li
+												class="page-item  <c:if test="${index == i.toString()}"> active </c:if>">
+												<a class="page-link " href="${listUrl}index=${i}">${i}</a>
+											</li>
+										</c:forEach>
+
+										<li
+											class="page-item <c:if test="${index == lastPage}">disabled</c:if>"><a
+											href="${listUrl}index=${lastPage}" class="page-link"
+											aria-label="Next"><span aria-hidden="true">»</span><span
+												class="sr-only">Next</span></a></li>
+									</ul>
+								</nav>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+					
 				</div>
 			</div>
 			</div>

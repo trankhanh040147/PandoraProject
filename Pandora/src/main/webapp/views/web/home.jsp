@@ -88,7 +88,7 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Sản phẩm mới</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">🆕Sản phẩm mới</span></h2>
         </div>
 	        <div class="row px-xl-5 pb-3">
 	        
@@ -131,8 +131,8 @@
         <div class="row justify-content-md-center py-5 px-xl-5">
             <div class="col-md-6 col-12 py-5">
                 <div class="text-center mb-2 pb-2">
-                    <h2 class="section-title px-5 mb-3"><span class="bg-secondary px-2">Stay Updated</span></h2>
-                    <p>Amet lorem at rebum amet dolores. Elitr lorem dolor sed amet diam labore at justo ipsum eirmod duo labore labore.</p>
+                    <h2 class="section-title px-5 mb-3"><span class="bg-secondary px-2">🔔Nhận thông báo</span></h2>
+                    <p>Hãy nhập email vào để </p>
                 </div>
                 <form action="">
                     <div class="input-group">
@@ -151,7 +151,7 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Just Arrived</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">🔥Giám giá HOT</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
 			<!-- Load danh sách sản phẩm giảm giá nhiều nhất -->

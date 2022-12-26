@@ -93,21 +93,22 @@ public class LoginController extends HttpServlet {
 			// Gắn tài khoản đã lưu trên session "account"
 			User u = (User) session.getAttribute("account");
 
-			Constant.setAlert(req, resp, "success",
-					"Đăng nhập thành công, xin chào mừng +" + u.getLastname() + " " + u.getLastname() + "!");
 
 			if (("customer").equals(u.getRole())) {
 				// Load dữ liệu của customer và lưu trên session
-				LoadCustomerData(req, resp);
+				LoadCustomerData(req, resp);						
 				resp.sendRedirect(req.getContextPath() + "/home");
 			}
 			if (("vendor").equals(u.getRole())) {
 				// Lưu tên đăng nhập vào session "username"
+				Constant.setAlertSession(req, resp, "success", "Đăng nhập thành công, xin chào mừng " + u.getLastname()+" "+u.getFirstname()+"!");
 				resp.sendRedirect(req.getContextPath() + "/vendor/home");
 			}
 			if (("admin").equals(u.getRole())) {
 				// Lưu tên đăng nhập vào session "username"
-				resp.sendRedirect(req.getContextPath() + "/admin/home");
+				Constant.setAlertSession(req, resp, "success",
+						"Đăng nhập thành công, xin chào mừng " + u.getFirstname()+"!");
+				resp.sendRedirect(req.getContextPath() + "/admin/ManagerUser");
 			}
 
 		}

@@ -8,7 +8,7 @@ public interface iStyleDao {
 	List<Style> getAll(int index, int pagesize);
 
 	Style getOne(int id);
-
+	
 	void insert(Style style);
 
 	void update(Style style);

@@ -15,7 +15,7 @@ public interface iStoreDao {
 
 	List<Integer> GetIdSrore(int id);
 
-	List<Store> GetStoreByownerId(int id);
+	List<Store> GetStoreByownerId(int index, int pagesize,int id);
 
 	void UpdateWallet(int id, double mount);
 	

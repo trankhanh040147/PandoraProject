@@ -6,6 +6,9 @@
     pageEncoding="UTF-8"%>
     
 <%@ page import="vn.pandora.Util.*" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 

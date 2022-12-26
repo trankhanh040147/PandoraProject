@@ -27,7 +27,6 @@ import vn.pandora.Service.Impl.StyleValueServiceImpl;
 import vn.pandora.Util.Constant;
 import vn.pandora.Util.UtilClass;
 
-
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 10, // 10MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
@@ -58,7 +57,7 @@ public class UpdateProductController extends HttpServlet {
 		listStyletype = styleService.getAlLById(3);// type
 		product = productService.GetOne(id);
 
-		listStoreId = storeServiceImpl.GetStoreByownerId(users.getId());
+		listStoreId = storeServiceImpl.GetStoreByownerId(0,200,users.getId());
 		req.setAttribute("listStoreId", listStoreId);
 		req.setAttribute("listCategory", listCategory);
 		req.setAttribute("listStyleColor", listStyleColor);
@@ -72,11 +71,17 @@ public class UpdateProductController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
-		String filenamecover = "";
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		//Ktra
+		Product productTemp =  productService.GetOne(id);
+		String filenamecover = productTemp.getListImages() != null ? productTemp.getListImages().get(0) : "";
+
 		Part part1 = request.getPart("featured_image");
 
 		if (part1.getSubmittedFileName() != "") {
@@ -94,12 +99,12 @@ public class UpdateProductController extends HttpServlet {
 		List<String> listImages = new ArrayList<String>();
 		String descripsion = request.getParameter("descripsion");
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
-		int id = Integer.parseInt(request.getParameter("id"));
 		int category = Integer.parseInt(request.getParameter("category"));
 		int storeId = Integer.parseInt(request.getParameter("storeId"));
 		int color = Integer.parseInt(request.getParameter("Style-color"));
 		int size = Integer.parseInt(request.getParameter("Style-size"));
 		int type = Integer.parseInt(request.getParameter("Style-type"));
+		
 		List<Integer> styleVaLueIds = new ArrayList<Integer>();
 		styleVaLueIds.add(color);
 		styleVaLueIds.add(size);
