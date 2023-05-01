@@ -38,21 +38,29 @@ public class withDrawController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		User users = (User) session.getAttribute("account");
-		int storeId= Integer.parseInt(request.getParameter("storeId"));
-		int amount=  Integer.parseInt(request.getParameter("amount"));
-		String password = request.getParameter("password");
-		if (password.equals(users.getPassword())) {
-			Transaction transaction= new Transaction(users.getId(),storeId,true,amount);
-			transactionServiceImpl.Add(transaction);
-			Constant.setAlertSession(request, response, "success", "Rút tiền thành công");
-			response.sendRedirect(request.getContextPath() + "/vendor/Transaction");
-		}
-		else {
-			String test="Rút tiền  không thành công ! Bạn cần nhập đúng mật khẩu tài khoản của bạn!";
+		try {
+			User users = (User) session.getAttribute("account");
+			int storeId= Integer.parseInt(request.getParameter("storeId"));
+			int amount=  Integer.parseInt(request.getParameter("amount"));
+			String password = request.getParameter("password");
+			if (password.equals(users.getPassword())) {
+				Transaction transaction= new Transaction(users.getId(),storeId,true,amount);
+				transactionServiceImpl.Add(transaction);
+				Constant.setAlertSession(request, response, "success", "Rút tiền thành công");
+				response.sendRedirect(request.getContextPath() + "/vendor/Transaction");
+			}
+			else {
+				String test="Rút tiền  không thành công ! Bạn cần nhập đúng mật khẩu tài khoản của bạn!";
+		    	request.setAttribute("alert3", test);
+				request.getRequestDispatcher("/views/vendor/Withdraw.jsp").forward(request, response);
+			}
+		} catch (Exception e) {
+			String test="Rút tiền không thành công ! Bạn cần nhập đầy đủ thông tin!";
 	    	request.setAttribute("alert3", test);
 			request.getRequestDispatcher("/views/vendor/Withdraw.jsp").forward(request, response);
+
 		}
+		
 	}
 
 }

@@ -114,7 +114,7 @@ private void LoadData(HttpServletRequest req, HttpServletResponse resp)
 			response.sendRedirect(request.getContextPath() + "/vendor/ListProduct");
 		
 		} catch (Exception e) {
-			String test="Tạo cửa hàng không thành công ! Bạn cần nhập đầy đủ thông tin!";
+			String test="Tạo sản phẩm không thành công ! Bạn cần nhập đầy đủ thông tin!";
 	    	request.setAttribute("alert2", test);
 			LoadData(request, response);
 		}
