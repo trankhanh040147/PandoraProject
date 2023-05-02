@@ -10,6 +10,7 @@
 
 <head>
 <meta charset="UTF-8">
+<title>Pandora</title>
 </head>
 
 <body>

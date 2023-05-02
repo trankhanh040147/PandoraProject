@@ -17,12 +17,9 @@ public class Constant {
 	public static final String SESSION_USERNAME = "username";
 	public static final String COOKIE_REMEMBER = "username";
 	
-//	public static final String DIR = dir+"\\upload\\img\\DKDTUTE";
+//	public static final String DIR = dir+"\\upload\\img\\Pandora";
 	public static final String DIR = "D:\\upload\\img\\Pandora";
-
 	
-	public static final String[] topicType_name = {"Tiểu luận chuyên ngành","Đề tài tốt nghiệp","Tiểu luận chuyên ngành","Đề tài tốt nghiệp"};
-	public static final Integer[] topicType_year = {2018, 2018, 2019, 2019};
 
 	public static void setAlert(HttpServletRequest req, HttpServletResponse resp, String alertType, String cmt) {
 		if (alertType == "success") {
