@@ -34,6 +34,7 @@ public class UpdateInfo extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html; charset=UTF-8");
+		resp.setHeader("X-Frame-Options", "SAMEORIGIN");
 		String url = req.getRequestURL().toString();
 
 		// Thay đổi thông tin profile
@@ -48,6 +49,7 @@ public class UpdateInfo extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html; charset=UTF-8");
+		resp.setHeader("X-Frame-Options", "SAMEORIGIN");
 		String url = req.getRequestURL().toString();
 
 		// Thay đổi thông tin profile
@@ -64,6 +66,7 @@ public class UpdateInfo extends HttpServlet {
 		// Set content
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
+		resp.setHeader("X-Frame-Options", "SAMEORIGIN");
 		req.setCharacterEncoding("UTF-8");
 
 		// Lấy account từ session
@@ -126,6 +129,8 @@ public class UpdateInfo extends HttpServlet {
 		// Set content
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
+		resp.setHeader("X-Frame-Options", "SAMEORIGIN");
+
 		req.setCharacterEncoding("UTF-8");
 
 		// Lấy account từ session

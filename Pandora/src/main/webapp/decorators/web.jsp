@@ -17,6 +17,7 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<meta content="Free HTML Templates" name="keywords">
 	<meta content="Free HTML Templates" name="description">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self';img-src 'self';script-src 'self';connect-src 'self';style-src 'self';frame-src 'self'; font-src 'self';" >
 		
 	<!-- Favicon -->
 	<link href="${dir}/img/favicon.ico" rel="icon">
