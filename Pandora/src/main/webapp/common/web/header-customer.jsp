@@ -9,6 +9,7 @@
 
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self';img-src 'self';script-src 'self';connect-src 'self';style-src 'self';frame-src 'self'; font-src 'self';" >
 </head>
 
 <body>

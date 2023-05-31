@@ -3,7 +3,7 @@ package vn.pandora.Model;
 import java.sql.Date;
 import java.util.List;
 
-import org.eclipse.jdt.internal.compiler.lookup.ImplicitNullAnnotationVerifier;
+//import org.eclipse.jdt.internal.compiler.lookup.ImplicitNullAnnotationVerifier;
 
 public class OrderItem {
 
