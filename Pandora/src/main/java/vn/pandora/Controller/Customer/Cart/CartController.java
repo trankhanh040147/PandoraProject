@@ -88,7 +88,7 @@ public class CartController extends HttpServlet {
 			shipCost += 10000;
 			totalCost += cartItem.getCount() * cartItem.getProduct().getPromotionalPrice();
 		}
-		payCost = totalCost - shipCost;
+		payCost = totalCost + shipCost;
 
 		// Gắn các cartItems và tổng tiền lên view
 		req.setAttribute("cart_items_list", list);

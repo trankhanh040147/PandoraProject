@@ -49,8 +49,7 @@
                             <p class="help-block text-danger"></p>
                         </div>
                         <div>
-                            <button style="margin-left: 33%;" class="btn btn-primary py-2 px-4" type="submit" >Send
-                                Message</button>
+                            <button style="margin-left: 33%;" class="btn btn-primary py-2 px-4" type="submit" >Cập nhật mật khẩu</button>
                         </div>
                     </form>
                     

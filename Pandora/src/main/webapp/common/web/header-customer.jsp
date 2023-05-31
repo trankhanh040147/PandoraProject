@@ -120,9 +120,9 @@
                         
                         <div class="navbar-nav mr-auto py-0">
                             <a href="${Url}home" class="nav-item nav-link"><i class="fas fa-home text-primary mr-1"></i>Trang chủ</a>
-                            <a href="${Url}" class="nav-item nav-link"><i class="fas fa-x-ray text-primary mr-1"></i>Danh mục</a>
+                            <a href="${Url}/search/product?keyword=" class="nav-item nav-link"><i class="fas fa-x-ray text-primary mr-1"></i>Danh mục</a>
                             <a href="?????" class="nav-item nav-link active"><i class="fas fa-search text-primary mr-1"></i>Tìm kiếm</a>
-                            <a href="contact.html" class="nav-item nav-link"><i class="fas fa-chalkboard-teacher text-primary mr-1"></i>Liên hệ</a>
+                            <a href="contact.html" class="nav-item nav-link d-none"><i class="fas fa-chalkboard-teacher text-primary mr-1"></i>Liên hệ</a>
                         </div>
                         
                         <div class="navbar-nav ml-auto py-0">

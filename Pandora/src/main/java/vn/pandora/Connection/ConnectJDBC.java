@@ -8,20 +8,20 @@ import vn.pandora.Connection.*;
 public class ConnectJDBC {
 
 	// Connection của Ân
-		private final String serverName = "LAPTOP-EVKJEPF2";
-		private final String dbName = "Pandora";
-		private final String portNumber = "1433";
-		private final String instance = "SQLEXPRESS";
-		private final String userID = "sa";
-		private final String password = "123456";
+//		private final String serverName = "LAPTOP-EVKJEPF2";
+//		private final String dbName = "PandoraShop";
+//		private final String portNumber = "1433";
+//		private final String instance = "SQLEXPRESS";
+//		private final String userID = "sa";
+//		private final String password = "123456";
 
 	// Connection của P.Khánh
-//		private final String serverName = "localhost";
-//		private final String dbName = "Pandora";
-//		private final String portNumber = "1433";
-//		private final String instance = "";
-//		private final String userID = "sa";
-//		private final String password = "040147";
+		private final String serverName = "localhost";
+		private final String dbName = "PandoraShop";
+		private final String portNumber = "1433";
+		private final String instance = "";
+		private final String userID = "sa";
+		private final String password = "040147";
 
 	// Connection của Q.Khánh
 //		private final String serverName = "localhost";

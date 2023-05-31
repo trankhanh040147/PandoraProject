@@ -75,7 +75,7 @@
         </div>
         <div class="row border-top border-light mx-xl-5 py-4">
             <div class="col-md-6 px-xl-0">
-                <p class="mb-md-0 text-center text-md-left text-dark">
+                <p class="mb-md-0 text-center text-md-left text-dark" style="display:none;">
                     &copy; <a class="text-dark font-weight-semi-bold" href="#">Pandora</a>. Bản quyền thuộc về: Trần Phúc Khánh - Trần Quang Khánh - Ngô Thừa Ân. Designed
                     by
                     <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">HTML Codex</a><br>
