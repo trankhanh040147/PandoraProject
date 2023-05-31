@@ -19,15 +19,29 @@ public class LogoutController extends HttpServlet {
 		HttpSession session = req.getSession(false);
 		session.removeAttribute("account");
 		
+		//Remove cart session to prevent attack
+
+		// Remove the "cart" attribute from the session
+		if (session != null) {
+		    session.removeAttribute("cart");
+		}
+
+		// Invalidate the session
+		if (session != null) {
+		    session.invalidate();
+		}
+		
 		//Xoá cookie tài khoản hiện tại
 		Cookie[] theCookie = req.getCookies();
 		for (Cookie cookie : theCookie) {
 			if(cookie.getName().equals("username")) {
+				cookie.setSecure(true);
 				cookie.setValue("");
 				cookie.setMaxAge(0);
 				resp.addCookie(cookie);
 			}
 		}
+
 		
 		//Điều hướng về trang chủ cho khách
 		resp.sendRedirect(req.getContextPath() + "/home");

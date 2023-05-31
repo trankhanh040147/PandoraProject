@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.plaf.basic.BasicTreeUI.TreeCancelEditingAction;
 
-import org.apache.catalina.ant.jmx.JMXAccessorQueryTask;
-import org.eclipse.jdt.internal.compiler.ast.ClassLiteralAccess;
+//import org.apache.catalina.ant.jmx.JMXAccessorQueryTask;
+//import org.eclipse.jdt.internal.compiler.ast.ClassLiteralAccess;
 
 import vn.pandora.Model.Cart;
 import vn.pandora.Model.CartItem;
@@ -43,6 +43,7 @@ public class CartController extends HttpServlet {
 		String url = req.getRequestURL().toString();
 
 		HttpSession session = req.getSession();
+		session.setAttribute("org.apache.catalina.SESSION_COOKIE_SECURE", true);
 		User account_cur = (User) session.getAttribute("account");
 
 		// Trang chủ cho vendor
@@ -69,6 +70,7 @@ public class CartController extends HttpServlet {
 	private void LoadCartItems(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// Lấy thông tin cart hiện tại từ session
 		HttpSession session = req.getSession();
+		session.setAttribute("org.apache.catalina.SESSION_COOKIE_SECURE", true);
 		Cart cart_cur = (Cart) session.getAttribute("cart");
 
 		// Nếu chưa tạo cart thì hiển thị rỗng
@@ -105,6 +107,7 @@ public class CartController extends HttpServlet {
 			throws ServletException, IOException {
 		// Lấy dữ liệu cart hiện tại trên session
 		HttpSession session = req.getSession();
+		session.setAttribute("org.apache.catalina.SESSION_COOKIE_SECURE", true);
 		Cart cart_cur = (Cart) session.getAttribute("cart");
 
 		// Nếu chưa có cart thì thông báo lỗi
@@ -143,6 +146,7 @@ public class CartController extends HttpServlet {
 
 		// Lấy dữ liệu cart hiện tại trên session
 		HttpSession session = req.getSession();
+		session.setAttribute("org.apache.catalina.SESSION_COOKIE_SECURE", true);
 		User account_cur = (User) session.getAttribute("account");
 		Cart cart_cur = (Cart) session.getAttribute("cart");
 

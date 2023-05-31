@@ -54,6 +54,7 @@ public class LoginController extends HttpServlet {
 	protected void loginCheck(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// Xử lí check tài khoản trên session và cookie
 		HttpSession session = req.getSession(false);
+		session.setAttribute("org.apache.catalina.SESSION_COOKIE_SECURE", true);
 
 		// Nếu đã có session "account" thì chuyển sang sq waiting
 		if (session != null && session.getAttribute("account") != null) {
@@ -73,6 +74,7 @@ public class LoginController extends HttpServlet {
 					User users = userService.findByEmail(username);
 					// Gắn tài khoản đã lưu trong cookie vào session "username"
 					session = req.getSession(true);
+					session.setAttribute("org.apache.catalina.SESSION_COOKIE_SECURE", true);
 					session.setAttribute("account", users);
 					resp.sendRedirect(req.getContextPath() + "/login/waiting");
 					return;
@@ -86,6 +88,7 @@ public class LoginController extends HttpServlet {
 	private void loginWaiting(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
+		session.setAttribute("org.apache.catalina.SESSION_COOKIE_SECURE", true);
 
 		// Nếu có session "account" đã lưu thông tin đăng nhập
 		if (session != null && session.getAttribute("account") != null) {
@@ -118,6 +121,7 @@ public class LoginController extends HttpServlet {
 	private void LoadCustomerData(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		//Tìm thông tin giỏ hàng của khách hàng
 		HttpSession session = req.getSession();
+		session.setAttribute("org.apache.catalina.SESSION_COOKIE_SECURE", true);
 		User u = (User) session.getAttribute("account");
 
 		Cart cart = cartService.findLastByUserId(u.getId());
@@ -162,6 +166,8 @@ public class LoginController extends HttpServlet {
 		if (account != null) {
 			// Nếu đăng nhập thành công --> Lưu tài khoản trên Session và Cookie
 			HttpSession session = req.getSession(true);
+			session.setAttribute("org.apache.catalina.SESSION_COOKIE_SECURE", true);
+
 			session.setAttribute("account", account);
 
 			// Nếu có chọn "Nhớ mật khẩu" thì lưu username và password vào cookie
@@ -184,6 +190,8 @@ public class LoginController extends HttpServlet {
 
 		// Lưu tài khoản lên cookie
 		Cookie cookie = new Cookie(Constant.COOKIE_REMEMBER, username);
+		
+		cookie.setSecure(true);	
 
 		// set thời gian hết hạn của cookie là 5 ngày
 		cookie.setMaxAge(5 * 24 * 60 * 60);
