@@ -16,20 +16,20 @@ public class ConnectJDBC {
 //		private final String password = "123456";
 
 	// Connection của P.Khánh
-		private final String serverName = "localhost";
-		private final String dbName = "PandoraShop";
-		private final String portNumber = "1433";
-		private final String instance = "";
-		private final String userID = "sa";
-		private final String password = "040147";
-
-	// Connection của Q.Khánh
 //		private final String serverName = "localhost";
-//		private final String dbName = "Pandora";
+//		private final String dbName = "PandoraShop";
 //		private final String portNumber = "1433";
 //		private final String instance = "";
 //		private final String userID = "sa";
-//		private final String password = "123456";
+//		private final String password = "040147";
+//
+//	 Connection của Q.Khánh
+		private final String serverName = "localhost";
+		private final String dbName = "LTWeb";
+		private final String portNumber = "1433";
+		private final String instance = "";
+		private final String userID = "sa";
+		private final String password = "123456";
 
 	// Conection của Thắng
 //		private final String serverName = "LAPTOP-EVKJEPF2";
