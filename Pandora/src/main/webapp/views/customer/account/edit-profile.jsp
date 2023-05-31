@@ -76,7 +76,7 @@
 	                    <div class="card-body">
 			                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
 			                   	<label> 
-				                   	<input type="file" accept="image/*" name="avatar"
+				                   	<input type="file" accept="image/png, image/jpg, image/jpeg"  name="avatar"
 									onchange="document.querySelector('.profilepic__image').src = window.URL.createObjectURL(this.files[0]);
 									document.querySelector('.avatar-topbar.border-white').src = window.URL.createObjectURL(this.files[0]);"
 										style="display:none;cursor: pointer;">
@@ -86,7 +86,7 @@
 												<img class="profilepic__image" src="${imgUrl}"
 													onerror="this.src='${dir}/img/avatar/default-customer.png';this.onerror='';"
 													width="150px" height="150px" alt="Profibild"
-													style="align-items: center;">
+													style="align-items: center;" onchange="validateFileType(this)">
 												<div class="profilepic__content">
 													<span class="profilepic__icon"><i
 														class="fas fa-camera"></i></span> <span class="profilepic__text">Đổi
@@ -109,5 +109,13 @@
 	        </div>
 	    </div>
 	</form>
+   <script type="text/javascript">
+    function validateFileType(){
+    	
+    
+            alert("Only jpg/jpeg and png files are allowed!");
+       
+    }
+</script>
    
     <!-- Edit Profile End -->
